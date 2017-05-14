@@ -6,6 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.*;
 public class MyTank extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	MyPanel mp=null;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -33,6 +37,11 @@ public class MyTank extends JFrame{
 //ÎÒµÄÃæ°å
 class MyPanel extends JPanel implements KeyListener,Runnable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void run() {
 		// TODO Auto-generated method stub
 		while(true){
