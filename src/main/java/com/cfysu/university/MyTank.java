@@ -1,4 +1,4 @@
-package com.cfysu;
+package com.cfysu.university;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,9 +20,9 @@ public class MyTank extends JFrame{
 	public MyTank(){
 		mp=new MyPanel();
 		this.add(mp);
-		//×¢²á¼àÌýÆ÷
+		//×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		this.addKeyListener(mp);
-		//Æô¶¯mpÏß³Ì
+		//ï¿½ï¿½ï¿½ï¿½mpï¿½ß³ï¿½
 		Thread th=new Thread(mp);
 		th.start();
 		this.setSize(400,300);
@@ -34,7 +34,7 @@ public class MyTank extends JFrame{
 
 }
 
-//ÎÒµÄÃæ°å
+//ï¿½Òµï¿½ï¿½ï¿½ï¿½
 class MyPanel extends JPanel implements KeyListener,Runnable{
 	
 	/**
@@ -50,7 +50,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			//ÅÐ¶ÏÊÇ·ñ»÷ÖÐµÐÈËÌ¹¿Ë
+			//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ì¹ï¿½ï¿½
 			for(int i=0;i<hero.bb.size();i++){
 				Bullet b=hero.bb.get(i);
 				if(b.isAlive){
@@ -60,7 +60,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 					}
 				}
 			}
-			//ÅÐ¶ÏÊÇ·ñ»÷ÖÐÎÒ·½Ì¹¿Ë
+			//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò·ï¿½Ì¹ï¿½ï¿½
 			for(int i=0;i<ets.size();i++){
 				Enemy eTank=ets.get(i);
 				for(int j=0;j<eTank.bb.size();j++){
@@ -75,19 +75,19 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 				System.exit(0);
 			}
 			
-			//ÖØ»æ
+			//ï¿½Ø»ï¿½
 			this.repaint();
 			
 		}
 	}
-	//ÅÐ¶ÏÊÇ·ñ»÷ÖÐÌ¹¿Ë
+	//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½
 	public void isHit(Bullet b,Tank et){
 		switch(et.direct){
 		
 		case 0:
 		case 2:
 			if(b.isAlive&&et.isAlive&&b.getY()<et.getY()+30&&b.getY()>et.getY()&&b.getX()>et.getX()&&b.getX()<et.getX()+20){
-				//»÷ÖÐ
+				//ï¿½ï¿½ï¿½ï¿½
 				b.isAlive=false;
 				et.isAlive=false;
 			}
@@ -95,7 +95,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 		case 1:
 		case 3:
 			if(b.isAlive&&et.isAlive&&b.getY()<et.getY()+20&&b.getY()>et.getY()&&b.getX()>et.getX()&&b.getX()<et.getX()+30){
-				//»÷ÖÐ
+				//ï¿½ï¿½ï¿½ï¿½
 				b.isAlive=false;
 				et.isAlive=false;
 			}
@@ -105,7 +105,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 	}
 	
 	
-	//¶¨ÒåÒ»¸öÎÒµÄÌ¹¿Ë
+	//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Òµï¿½Ì¹ï¿½ï¿½
 	Hero hero=null;
 	Vector<Enemy> ets=new Vector<Enemy>();
 	int etsCount=3;
@@ -136,7 +136,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 			hero.fire(hero.getDirect());
 			}
 		}
-		//ÖØ»æ
+		//ï¿½Ø»ï¿½
 		repaint();
 	}
 	public void keyReleased(KeyEvent e) {
@@ -148,9 +148,9 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 		
 	}
 	public MyPanel(){
-		//´´½¨ÎÒµÄÌ¹¿Ë
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Ì¹ï¿½ï¿½
 		hero=new Hero(200,200);
-		//´´½¨µÐÈËÌ¹¿Ë×é
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½
 		for(int i=0;i<etsCount;i++){
 			Enemy et=new Enemy((i+1)*100,0);
 			Thread th1=new Thread(et);
@@ -159,14 +159,14 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 		}
 	
 	}
-	//ÖØÐ´paint
+	//ï¿½ï¿½Ð´paint
 	public void paint(Graphics g){
 		super.paint(g);
 		g.fillRect(0, 0, 400, 300);
 		if(hero.isAlive){
 		this.drawTank(hero.getX(), hero.getY(), g, this.hero.direct, 0);
 		}
-		//»­³öµÐÈËµÄÌ¹¿Ë
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ì¹ï¿½ï¿½
 		for(int i=0;i<ets.size();i++){
 			Enemy eTank=ets.get(i);
 			if(eTank.isAlive)
@@ -174,7 +174,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 			this.drawTank(eTank.getX(),eTank.getY(),g,eTank.getDirect(),1);
 			}
 		}
-		//»­³öÎÒ·½Ì¹¿ËµÄ×Óµ¯
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ò·ï¿½Ì¹ï¿½Ëµï¿½ï¿½Óµï¿½
 		for(int i=0;i<hero.bb.size();i++){
 			Bullet b=hero.bb.get(i);
 		
@@ -186,7 +186,7 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 				hero.bb.remove(b);
 			}
 		}
-		//»­³öµÐ·½Ì¹¿ËµÄ×Óµ¯
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½Ì¹ï¿½Ëµï¿½ï¿½Óµï¿½
 		for(int i=0;i<ets.size();i++){
 			Enemy eTank=ets.get(i);
 			for(int j=0;j<eTank.bb.size();j++){
@@ -204,10 +204,10 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 		
 		
 	}
-	//»­³öÌ¹¿Ë
+	//ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½
 	public void drawTank(int x,int y,Graphics g,int direc,int type){
 		
-		//Ì¹¿ËÀàÐÍ
+		//Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		switch(type){
 		case 0:
 			g.setColor(Color.GREEN);
@@ -216,27 +216,27 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 			g.setColor(Color.RED);
 			break;
 		}
-		//·½Ïò
+		//ï¿½ï¿½ï¿½ï¿½
 		switch(direc){
-		//ÏòÉÏ
+		//ï¿½ï¿½ï¿½ï¿½
 		case 0:
 			
-			//»­³öÌ¹¿Ë
-			//1.»­³ö×ó±ßµÄ¾ØÐÎ
+			//ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½
+			//1.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµÄ¾ï¿½ï¿½ï¿½
 			
 			g.fill3DRect(x, y, 5, 30,false);
-			//2.ÓÒ±ß
+			//2.ï¿½Ò±ï¿½
 			g.fill3DRect(x+15, y, 5, 30,false);
-			//3.ÖÐ¼ä
+			//3.ï¿½Ð¼ï¿½
 			g.fill3DRect(x+5, y+5, 10, 20,false);
 			
-			//4.Ô²ÐÎ
+			//4.Ô²ï¿½ï¿½
 			g.fillOval(x+5, y+10, 10, 10);
 			
-			//5.ÅÚÍ²
+			//5.ï¿½ï¿½Í²
 			g.drawLine(x+9, y+15, x+9, y);
 			break;
-			//ÏòÓÒ
+			//ï¿½ï¿½ï¿½ï¿½
 		case 1:
 			g.fill3DRect(x, y, 30, 5, false);
 			
@@ -249,22 +249,22 @@ class MyPanel extends JPanel implements KeyListener,Runnable{
 			g.drawLine(x+15, y+10,x+30 , y+10);
 			
 			break;
-			//ÏòÏÂ
+			//ï¿½ï¿½ï¿½ï¿½
 		case 2:
 			//1.left
 			g.fill3DRect(x, y, 5, 30,false);
-			//2.ÓÒ±ß
+			//2.ï¿½Ò±ï¿½
 			g.fill3DRect(x+15, y, 5, 30,false);
-			//3.ÖÐ¼ä
+			//3.ï¿½Ð¼ï¿½
 			g.fill3DRect(x+5, y+5, 10, 20,false);
 			
-			//4.Ô²ÐÎ
+			//4.Ô²ï¿½ï¿½
 			g.fillOval(x+5, y+10, 10, 10);
 			
-			//5.ÅÚÍ²
+			//5.ï¿½ï¿½Í²
 			g.drawLine(x+9, y+15, x+9, y+30);
 			break;
-			//Ïò×ó
+			//ï¿½ï¿½ï¿½ï¿½
 		case 3:
 			g.fill3DRect(x, y, 30, 5, false);
 			

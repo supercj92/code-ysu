@@ -20,4 +20,11 @@ public class SimpleSortTest {
 		SimpleSort.selectSort(intArray);
 		System.out.println(Arrays.toString(intArray));
 	}
+
+	@Test
+	public void testInsertSort(){
+		System.out.println(Arrays.toString(intArray));
+		SimpleSort.insertSort(intArray);
+		System.out.println(Arrays.toString(intArray));
+	}
 }

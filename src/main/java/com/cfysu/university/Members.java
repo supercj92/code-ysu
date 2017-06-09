@@ -1,9 +1,9 @@
-package com.cfysu;
+package com.cfysu.university;
 import java.util.*;
-//Ì¹¿ËÀà
+//Ì¹ï¿½ï¿½ï¿½ï¿½
 class Tank{
 	
-	//Ì¹¿Ëºá×Ý×ø±ê
+	//Ì¹ï¿½Ëºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int x=0;
 	int y=0;
 	int direct=0;
@@ -15,7 +15,7 @@ class Tank{
 	Bullet b=null;
 	
 	public void fire(int derict){
-		//´´½¨×Óµ¯
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½
 		switch(derict){
 		case 0:
 		b=new Bullet(x+9,y,derict);
@@ -88,7 +88,7 @@ class Tank{
 	}
 }
 
-//ÎÒµÄÌ¹¿Ë
+//ï¿½Òµï¿½Ì¹ï¿½ï¿½
 class Hero extends Tank{
 	
 	
@@ -98,7 +98,7 @@ class Hero extends Tank{
 	}
 	
 }
-//µÐÈËµÄÌ¹¿Ë
+//ï¿½ï¿½ï¿½Ëµï¿½Ì¹ï¿½ï¿½
 class Enemy extends Tank implements Runnable{
 	
 	public Enemy(int x,int y){
@@ -111,7 +111,7 @@ class Enemy extends Tank implements Runnable{
 			try{
 			Thread.sleep(1000);
 			}catch(Exception e){e.printStackTrace();};
-			//ÒÆ¶¯
+			//ï¿½Æ¶ï¿½
 			int dire=(int)((Math.random())*100);
 			if(dire<=25){
 				if(isAlive){
@@ -163,7 +163,7 @@ class Enemy extends Tank implements Runnable{
 	}
 	
 }
-//×Óµ¯
+//ï¿½Óµï¿½
 class Bullet implements Runnable{
 	
 	
@@ -171,7 +171,7 @@ class Bullet implements Runnable{
 	int y;
 	boolean isAlive=true;
 	int derict;
-	//×Óµ¯ËÙ¶È
+	//ï¿½Óµï¿½ï¿½Ù¶ï¿½
 	int speed=2;
 	
 	
@@ -207,7 +207,7 @@ class Bullet implements Runnable{
 				x-=speed;
 				break;
 			}
-			System.out.println("x×ø±ê:"+x+"y×ø±ê:"+y);
+			System.out.println("xï¿½ï¿½ï¿½ï¿½:"+x+"yï¿½ï¿½ï¿½ï¿½:"+y);
 			if(x>400||x<0||y>300||y<0){
 				isAlive=false;
 				System.out.println("------------------------------->break");

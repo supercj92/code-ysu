@@ -1,4 +1,4 @@
-package com.cfysu;
+package com.cfysu.university;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -48,7 +48,7 @@ public class MyBlock extends JFrame implements KeyListener{
 				sign_y[k]=0;
 			}
 		}
-		public void qinggame_body(){//game_bodyÊý×éÇåÁã
+		public void qinggame_body(){//game_bodyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			for(int i=0;i<13;i++){
 				for(int j=0;j<13;j++){
 					if(game_body[i][j]==2){
@@ -65,7 +65,7 @@ public class MyBlock extends JFrame implements KeyListener{
 				game_body[sign_x[k]][sign_y[k]]=2;
 			}
 		}
-		public void xiaochu(){//ÂúÐÐÏû³ý
+		public void xiaochu(){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			for(int j=0;j<13;j++){
 				int m=0;
 				for(int i=0;i<13;i++){
@@ -86,7 +86,7 @@ public class MyBlock extends JFrame implements KeyListener{
 			}
 			
 		}
-		public void xia(){//ÏÂ½µ
+		public void xia(){//ï¿½Â½ï¿½
 			dingwei();
 			int m=0;
 			for(int k=0;k<4;k++){
@@ -139,9 +139,9 @@ public class MyBlock extends JFrame implements KeyListener{
 				repaint();
 			}
 		}
-		 public void chansheng(){//²úÉúblock
+		 public void chansheng(){//ï¿½ï¿½ï¿½ï¿½block
 			 int num;
-			  num = (int)(Math.random() * 3+1);//²úÉú0~3Ö®¼äµÄËæ»úÕûÊý£¬°üÀ¨0²»°üÀ¨3
+			  num = (int)(Math.random() * 3+1);//ï¿½ï¿½ï¿½ï¿½0~3Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3
 			  
 			switch(num){
 			case 1:block1();break;
@@ -149,13 +149,13 @@ public class MyBlock extends JFrame implements KeyListener{
 			case 3:block3();break;
 			}
 		}
-		 public void block1(){//³¤Ìõ
+		 public void block1(){//ï¿½ï¿½ï¿½ï¿½
 			game_body[6][0]=1;
 			game_body[6][1]=1;
 			game_body[6][2]=1;
 			game_body[6][3]=1;
 		}
-	    public void block2(){//·½¿é
+	    public void block2(){//ï¿½ï¿½ï¿½ï¿½
 			game_body[6][0]=1;
 			game_body[6][1]=1;
 			game_body[7][0]=1;
@@ -191,7 +191,7 @@ public class MyBlock extends JFrame implements KeyListener{
 			MyBlock mb=new MyBlock();
 			mb.setSize(520,520);
 			mb.setVisible(true);
-			mb.addWindowListener(new WindowAdapter()  //ÎªÁË¹Ø±Õ´°¿Ú
+			mb.addWindowListener(new WindowAdapter()  //Îªï¿½Ë¹Ø±Õ´ï¿½ï¿½ï¿½
 			  {
 			   public void windowClosing(WindowEvent e)
 			   {
