@@ -20,7 +20,6 @@ import com.caucho.hessian.client.HessianProxyFactory;
 import com.cfysu.model.Car;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.test.hessian.service.HelloService;
 
 public class UnitTest {
 
@@ -138,21 +137,6 @@ public class UnitTest {
 		for(Car car2 : carList){
 			System.out.println("brand->" + car2.getBrand());
 		}
-	}
-	
-	@Test
-	public void testHessianClient(){
-		String url = "http://localhost:8080/hessian";
-		HessianProxyFactory factory = new HessianProxyFactory();
-		HelloService helloService = null;
-		try {
-			 helloService = (HelloService) factory.create(HelloService.class, url);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String res = helloService.sayHello("test msg");
-		System.out.println("res:" + res);
 	}
 	
 	@Test

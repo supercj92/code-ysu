@@ -1,4 +1,4 @@
-package com.cfysu.test2;
+package com.cfysu.junit;
 
 import org.junit.Test;
 import org.springframework.beans.BeanUtils;
@@ -6,9 +6,9 @@ import org.springframework.beans.BeanUtils;
 import com.alibaba.fastjson.JSON;
 import com.cfysu.model.Car;
 
-public class BeanUtilTest extends Car{
+public class ClazzExtendTest extends Car{
 
-	BeanUtilTest() {
+	ClazzExtendTest() {
 		//super(1, "");
 	}
 	public void whateverMethod(){
@@ -18,8 +18,8 @@ public class BeanUtilTest extends Car{
 	
 	@Test
 	public void testArray() {
-		Car car = new BeanUtilTest();
-		BeanUtilTest test = (BeanUtilTest)car;
+		Car car = new ClazzExtendTest();
+		ClazzExtendTest test = (ClazzExtendTest)car;
 		test.whateverMethod();
 		A a = new A();
 		a.age = 12;

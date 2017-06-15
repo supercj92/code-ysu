@@ -1,8 +1,5 @@
-package com.cfysu.thread;
+package com.cfysu.junit.thread;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

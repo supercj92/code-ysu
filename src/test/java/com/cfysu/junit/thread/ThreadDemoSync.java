@@ -1,4 +1,4 @@
-package com.cfysu.thread;
+package com.cfysu.junit.thread;
 
 public class ThreadDemoSync {
     public static void main(String[] args){

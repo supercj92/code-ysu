@@ -1,4 +1,4 @@
-package com.cfysu.test2;
+package com.cfysu.junit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
