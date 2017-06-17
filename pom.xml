@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.cfysu</groupId>
   <artifactId>code-ysu</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>code-ysu Maven Webapp</name>
   <url>http://maven.apache.org</url>
