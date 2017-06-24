@@ -1,6 +1,6 @@
 package com.cfysu.datastructure;
 
-import com.cfysu.datastructure.list.LinkedList;
+import com.cfysu.datastructure.link.Link;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -13,25 +13,25 @@ public class LinkListTest {
 
     @Test
     public void testLinkedList(){
-        LinkedList linkedList = new LinkedList();
+        Link link = new Link();
         //在链表头部插入
         logger.info("在链表头部插入");
-        linkedList.insertFirst(1);
-        linkedList.insertFirst(2);
-        linkedList.insertFirst(3);
-        linkedList.insertFirst(4);
-        linkedList.displayList();
+        link.insertFirst(1);
+        link.insertFirst(2);
+        link.insertFirst(3);
+        link.insertFirst(4);
+        link.displayList();
         //删除头节点
         logger.info("删除头节点");
-        linkedList.deleteFirst();
-        linkedList.displayList();
+        link.deleteFirst();
+        link.displayList();
         //在尾部插入节点
         logger.info("在尾部插入节点");
-        linkedList.insertLast(100);
-        linkedList.displayList();
+        link.insertLast(100);
+        link.displayList();
         //在尾部删除节点
         logger.info("在尾部删除节点");
-        linkedList.deleteLast();
-        linkedList.displayList();
+        link.deleteLast();
+        link.displayList();
     }
 }

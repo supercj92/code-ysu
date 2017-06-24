@@ -1,12 +1,10 @@
-package com.cfysu.datastructure.list;
+package com.cfysu.datastructure.link;
 
 /**
  * Created by cj on 17-6-17.
  */
 public class Node {
-    public Node(){
 
-    }
     public Node(int iData){
         this.iData = iData;
         this.next = null;

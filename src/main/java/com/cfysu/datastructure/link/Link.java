@@ -1,4 +1,4 @@
-package com.cfysu.datastructure.list;
+package com.cfysu.datastructure.link;
 
 
 import org.apache.log4j.Logger;
@@ -6,10 +6,10 @@ import org.apache.log4j.Logger;
 /**
  * Created by cj on 17-6-17.
  */
-public class LinkedList {
+public class Link {
     private Node first;
-    private static final Logger logger = Logger.getLogger(LinkedList.class);
-    public LinkedList(){
+    private static final Logger logger = Logger.getLogger(Link.class);
+    public Link(){
         this.first = null;
     }
 
