@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="encoding" value="UTF-8" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %p - %C[%L] - %m \n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG" />
+        </filter>
+    </appender>
+
+    <appender name="infoFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="encoding" value="UTF-8" />
+        <param name="Append" value="true" />
+        <param name="MaxFileSize" value="200MB"/>
+        <param name="File" value="/export/home/tomcat/logs/hctshopmin.jd.com/server1/app-info.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %p - %C[%L] - %m \n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO" />
+            <param name="LevelMax" value="INFO" />
+        </filter>
+    </appender>
+
+    <appender name="errorFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="encoding" value="UTF-8" />
+        <param name="Append" value="true" />
+        <param name="MaxFileSize" value="200MB"/>
+        <param name="File" value="/export/home/tomcat/logs/hctshopmin.jd.com/server1/app-error.log" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %p - %C[%L] - %m \n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN" />
+            <param name="LevelMax" value="ERROR" />
+        </filter>
+    </appender>
+
+    <root>
+        <appender-ref ref="console"/>
+    </root>
+</log4j:configuration>
