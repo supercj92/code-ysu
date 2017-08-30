@@ -1,4 +1,4 @@
-package com.cfysu.junit.thread;
+package com.cfysu.thread;
 
 public class ThreadDemoSync {
     public static void main(String[] args){
@@ -17,9 +17,9 @@ class Ticket implements Runnable{
     private int ticket = 10;
     public void run(){
         while(true){
-            synchronized (new Object()) {
+            //synchronized (new Object()) {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -28,7 +28,7 @@ class Ticket implements Runnable{
                     break;
                 ticket--;
                 System.out.println(Thread.currentThread().getName()+"--票数为--:"+ticket);
-            }
+            //}
         }
     }
 }

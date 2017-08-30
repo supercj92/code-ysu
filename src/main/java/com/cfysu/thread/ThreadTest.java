@@ -1,9 +1,9 @@
-package com.cfysu.junit.thread;
+package com.cfysu.thread;
+
+import org.junit.Test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import org.junit.Test;
 
 public class ThreadTest {
 
