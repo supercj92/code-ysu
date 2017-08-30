@@ -1,4 +1,4 @@
-package com.cfysu.junit;
+package com.cfysu.midware.cache;
 
 import org.junit.Before;
 import org.junit.Test;

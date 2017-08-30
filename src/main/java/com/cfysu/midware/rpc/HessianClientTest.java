@@ -1,9 +1,6 @@
-package com.cfysu.junit;
+package com.cfysu.midware.rpc;
 
-import com.caucho.hessian.client.HessianProxyFactory;
 import org.junit.Test;
-
-import java.net.MalformedURLException;
 
 /**
  * Created by longcangjian on 2017/6/15.

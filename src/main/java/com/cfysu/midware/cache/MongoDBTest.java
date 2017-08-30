@@ -1,4 +1,4 @@
-package com.cfysu.junit;
+package com.cfysu.midware.cache;
 
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
