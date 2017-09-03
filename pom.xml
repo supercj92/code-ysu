@@ -102,6 +102,13 @@
         <version>4.0.23.Final</version>
       </dependency>
 
+    <!--jdbc mysql驱动-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.38</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>code-ysu</finalName>
