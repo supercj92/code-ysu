@@ -12,6 +12,7 @@ import java.net.Socket;
 public class SocketServer {
 
     private static final Logger LOGGER = Logger.getLogger(SocketClient.class);
+
     public static void main(String[] args){
         SocketServer socketServer = new SocketServer();
         try {
@@ -22,15 +23,41 @@ public class SocketServer {
     }
 
     public void startServer() throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8888);
+        final ServerSocket serverSocket = new ServerSocket(8888);
         LOGGER.info("SocketServer:服务器端已启动,正在监听...");
-        //阻塞等待联接
-        Socket socket = serverSocket.accept();
         while (true){
             //一直监听
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String clientMsg = reader.readLine();
-            LOGGER.info("SocketServer:服务器端接受到了消息===>>>" + clientMsg);
+            //阻塞等待新connection
+            final Socket socket = serverSocket.accept();
+            final BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            //启动新线程处理客户端请求
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    LOGGER.info("启动新线程处理客户端请求,threadId:" + Thread.currentThread().getId());
+                    //while (true){
+                    for(int i = 0;i < 5;i++){
+
+                        String clientMsg = null;
+                        try {
+                            clientMsg = reader.readLine();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        LOGGER.info("reader:" + reader.hashCode() + ".SocketServer:服务器端接受到了消息===>>>" + clientMsg + ".threadId:" + Thread.currentThread().getId());
+                    }
+                    try {
+                        reader.close();
+                        socket.close();
+                        serverSocket.close();
+                        LOGGER.info("socket已关闭");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    //}
+                }
+            }).start();
 
             //响应客户端
             //PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));

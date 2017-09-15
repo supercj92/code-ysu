@@ -8,9 +8,16 @@ public class FileIO {
 
         FileIO fileIO = new FileIO();
         try {
+            //从console读取保存到file
             //fileIO.readFromConsoleToFile();
-            fileIO.copyFile();
-        } catch (IOException e) {
+            //复制文件
+            //fileIO.copyFile();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            while (true) {
+                String str =  reader.readLine();
+                System.out.println("str:" + str);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
