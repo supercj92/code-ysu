@@ -8,7 +8,7 @@ import java.util.concurrent.*;
 public class ExecutorServiceDemo {
 
     public static void main(String[] args){
-        System.out.println("主线程开始执行，线程id:" + Thread.currentThread().getId());
+        System.out.println("主线程开始执行，线程name:" + Thread.currentThread().getName());
         //1.runnable方式启动线程
         //new Thread(new RunnableThread()).start();
         //2.使用ExecutorService开启线程
@@ -18,14 +18,13 @@ public class ExecutorServiceDemo {
         //pool.shutdown();
         //3.使用ExecutorService开启Callable
         Callable<Integer> thread = new CallableThread();
-        Future<Integer> future1 = pool.submit(thread);
-        Future<Integer> future2 = pool.submit(thread);
+        Future<Integer> callTread = pool.submit(thread);
+        Future<?> runTread = pool.submit(new RunnableThread());
         try {
             //此方法会阻塞主线程，等待其他线程执行结束
-            Integer res1 = future1.get();
-            Integer res2 = future2.get();
-            System.out.println("future1 res1:" + res1);
-            System.out.println("future2 res2:" + res2);
+            Integer res1 = callTread.get();
+            System.out.println("callTread res1:" + res1);
+            System.out.println("runTread res2:" + runTread.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -33,7 +32,7 @@ public class ExecutorServiceDemo {
         }
 
         pool.shutdown();
-        System.out.println("主线程执行结束，线程id" + Thread.currentThread().getId());
+        System.out.println("主线程执行结束，线程name:" + Thread.currentThread().getName());
     }
 }
 
@@ -44,10 +43,10 @@ class RunnableThread implements Runnable{
         int count = 0;
         boolean flag = true;
         while (flag){
-            System.out.println(++count + "次----is running----:" + Thread.currentThread().getId());
+            System.out.println("runnable执行次数:" + ++count + "次----is running----:" + Thread.currentThread().getName());
             if(count == 10){
                 flag = false;
-                System.out.println("线程即将执行结束");
+                System.out.println("run线程即将执行结束");
             }
             try {
                 Thread.sleep(1000);
@@ -65,9 +64,9 @@ class CallableThread implements Callable<Integer>{
 
     @Override
     public Integer call() throws Exception {
-        System.out.println("进入call线程体，线程id:" + Thread.currentThread().getId());
+        System.out.println("进入call线程体，线程name:" + Thread.currentThread().getName());
         Thread.sleep(5000);
-        System.out.println("call线程体逻辑执行完毕，线程id:" + Thread.currentThread().getId());
+        System.out.println("call线程体逻辑执行完毕，线程name:" + Thread.currentThread().getName());
         return 1;
     }
 }

@@ -3,13 +3,14 @@ package com.cfysu.thread;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by cj on 2017/8/24.
  * 有死锁的问题
  * */
 public class ThreadCommunication {
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception{
         //生成账户
         Account account = new Account();
         Callable saveThread = new SaveThread(account);
@@ -21,6 +22,8 @@ public class ThreadCommunication {
         pool.submit(saveThread);
         //一个取钱的线程
         pool.submit(takeThread);
+
+        pool.awaitTermination(1, TimeUnit.MINUTES);
         pool.shutdown();
         System.out.println("主线程结束");
     }
@@ -47,7 +50,7 @@ class Account{
             isSaved = true;
             //唤醒其他线程
             notifyAll();
-            System.out.println(isSaved + "存钱操作已经执行:" + Thread.currentThread().getName());
+            System.out.println("isSaved:" + isSaved + ".存钱操作已经执行:" + Thread.currentThread().getName() + "当前余额:" + balance);
         }
     }
 
@@ -60,7 +63,7 @@ class Account{
             balance -= num;
             isSaved = false;
             notifyAll();
-            System.out.println(isSaved + "取钱操作已经执行:" + Thread.currentThread().getName());
+            System.out.println("isSaved:" + isSaved + ".取钱操作已经执行:" + Thread.currentThread().getName() + "当前余额:" + balance);
         }
     }
 }
@@ -75,9 +78,10 @@ class TakeThread implements Callable<Integer>{
 
     @Override
     public Integer call() throws Exception {
-        System.out.println("进入取钱线程:" + Thread.currentThread().getId());
+        System.out.println("进入取钱线程:" + Thread.currentThread().getName());
         for(int i = 0;i < 10;i++){
-            account.take(200);
+            System.out.println("取钱的次数:" +i);
+            account.take(100);
         }
         return null;
     }
@@ -92,8 +96,9 @@ class SaveThread implements Callable<Integer>{
     }
     @Override
     public Integer call() throws Exception {
-        System.out.println("进入存钱线程:" + Thread.currentThread().getId());
+        System.out.println("进入存钱线程:" + Thread.currentThread().getName());
         for (int i = 0;i < 10;i++){
+            System.out.println(Thread.currentThread().getName() + "存钱次数:" + i);
             account.save(100);
         }
         return null;
