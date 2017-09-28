@@ -1,12 +1,15 @@
 package com.cfysu.junit;
 
 import com.alibaba.fastjson.JSON;
+import com.cfysu.enums.MsgTypeEnum;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.*;
 
 public class UnitTestV2 {
@@ -65,7 +68,19 @@ public class UnitTestV2 {
 		LOGGER.warn("第一名{},第二名{}，第三名{}", args);
 	}
 
+	@Test
+    public void testEnums(){
+        System.out.println(MsgTypeEnum.MSG_TYPE_SUCCEED.getValue());
+    }
 
+    @Test
+	public void testAddress(){
+        try {
+            System.out.println(InetAddress.getLocalHost().getHostName());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+    }
 	}
 
 

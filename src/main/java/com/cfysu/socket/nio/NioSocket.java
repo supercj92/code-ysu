@@ -1,4 +1,4 @@
-package com.cfysu.socket;
+package com.cfysu.socket.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

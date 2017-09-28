@@ -2,9 +2,7 @@ package com.cfysu.socket;
 
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -19,22 +17,23 @@ public class SocketClient implements Callable{
     private static final Logger LOGGER = Logger.getLogger(SocketClient.class);
 
     private PrintWriter printWriter;
-
-    public SocketClient(PrintWriter printWriter){
+    private BufferedReader bufferedReader;
+    public SocketClient(PrintWriter printWriter, BufferedReader bufferedReader){
         this.printWriter = printWriter;
+        this.bufferedReader = bufferedReader;
     }
 
     public static void main(String[] args){
         try {
             Socket socket = new Socket("127.0.0.1", 8888);
             PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            //启动线程发送消息
-            new Thread(new FutureTask<String>(new SocketClient(writer))).start();
-
-            //用户发送消息
+            //启动线程接收消息
+            new Thread(new FutureTask<String>(new SocketClient(writer, reader))).start();
+            //主线程，用户发送消息
             Scanner scanner = new Scanner(System.in);
-            while (scanner.hasNext()){
+            while (true){
                 String userMsg = scanner.next();
                 if("bye".equals(userMsg)){
                     LOGGER.info("---用户退出---");
@@ -50,14 +49,25 @@ public class SocketClient implements Callable{
     }
 
     @Override
-    public String call() throws Exception {
+    public String call() {
         int msgCount = 0;
         while (true){
-            Thread.sleep(10000);
-            msgCount++;
-            printWriter.println("---thread msg---" + msgCount);
-            printWriter.flush();
-            LOGGER.info("---thread msg 已发出---" + msgCount);
+            //Thread.sleep(10000);
+            //msgCount++;
+            //printWriter.println("---thread msg---" + msgCount);
+            //printWriter.flush();
+            LOGGER.info("等待服务器回复消息");
+            String receiveMsg = null;
+            try {
+                receiveMsg = bufferedReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(null == receiveMsg){
+                LOGGER.info("客户端收消息线程退出");
+                return "exit";
+            }
+            LOGGER.info("---收到新消息---:" + receiveMsg);
         }
     }
 }

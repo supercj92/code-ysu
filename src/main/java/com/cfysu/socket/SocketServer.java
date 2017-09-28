@@ -30,14 +30,16 @@ public class SocketServer {
             //阻塞等待新connection
             final Socket socket = serverSocket.accept();
             final BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            final PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+            //final PrintStream printStream = new PrintStream(socket.getOutputStream());
 
             //启动新线程处理客户端请求
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     LOGGER.info("启动新线程处理客户端请求,threadId:" + Thread.currentThread().getId());
-                    //while (true){
-                    for(int i = 0;i < 5;i++){
+                    while (true){
+                    //for(int i = 0;i < 5;i++){
 
                         String clientMsg = null;
                         try {
@@ -45,26 +47,22 @@ public class SocketServer {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        if(null == clientMsg){
+                            LOGGER.info("服务器端收消息线程退出.threadid:" + Thread.currentThread().getId());
+                            return;
+                        }
                         LOGGER.info("reader:" + reader.hashCode() + ".SocketServer:服务器端接受到了消息===>>>" + clientMsg + ".threadId:" + Thread.currentThread().getId());
-                    }
-                    try {
-                        reader.close();
-                        socket.close();
-                        serverSocket.close();
-                        LOGGER.info("socket已关闭");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
                     //}
+                        //响应客户端
+                        writer.write("a msg from server:" + clientMsg);
+                        //如果不加换行符，则readline()一直阻塞
+                        writer.write(System.getProperty("line.separator"));
+                        //writer.println("a msg from server:" + clientMsg);
+                        writer.flush();
+                        LOGGER.info("已回复客户端消息");
+                    }
                 }
             }).start();
-
-            //响应客户端
-            //PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-            //writer.write("a msg from server");
-            //writer.flush();
-            //关掉之后将无法继续通信
-            //writer.close();
         }
     }
 }
