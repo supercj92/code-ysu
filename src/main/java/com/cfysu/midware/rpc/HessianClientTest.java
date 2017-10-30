@@ -6,9 +6,12 @@ import org.junit.Test;
 
 import java.net.MalformedURLException;
 
-/**
+/*
  * Created by longcangjian on 2017/6/15.
- */
+ *
+  */
+
+
 public class HessianClientTest {
 
     @Test

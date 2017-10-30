@@ -20,18 +20,23 @@ public class ExecutorServiceDemo {
         Callable<Integer> thread = new CallableThread();
         Future<Integer> callTread = pool.submit(thread);
         Future<?> runTread = pool.submit(new RunnableThread());
-        try {
+        /*try {
             //此方法会阻塞主线程，等待其他线程执行结束
-            Integer res1 = callTread.get();
-            System.out.println("callTread res1:" + res1);
-            System.out.println("runTread res2:" + runTread.get());
+            //Integer res1 = callTread.get();
+            //System.out.println("callTread res1:" + res1);
+            //System.out.println("runTread res2:" + runTread.get());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
+        }*/
 
         pool.shutdown();
+        try {
+            pool.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("主线程执行结束，线程name:" + Thread.currentThread().getName());
     }
 }

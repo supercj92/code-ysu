@@ -81,6 +81,12 @@ public class UnitTestV2 {
             e.printStackTrace();
         }
     }
+
+    @Test
+	public void genTestData(){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("", "");
+	}
 	}
 
 
