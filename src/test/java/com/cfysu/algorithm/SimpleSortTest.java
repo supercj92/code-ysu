@@ -22,9 +22,38 @@ public class SimpleSortTest {
 	}
 
 	@Test
+	public void testSelectSortAsc(){
+		System.out.println(Arrays.toString(intArray));
+		SimpleSort.selectSortAsc(intArray);
+		System.out.println(Arrays.toString(intArray));
+	}
+
+	@Test
 	public void testInsertSort(){
 		System.out.println(Arrays.toString(intArray));
 		SimpleSort.insertSort(intArray);
 		System.out.println(Arrays.toString(intArray));
+	}
+
+	@Test
+	public void testInsertSort2(){
+		System.out.println(Arrays.toString(intArray));
+		SimpleSort.insertSort2(intArray);
+		System.out.println(Arrays.toString(intArray));
+	}
+
+	@Test
+	public void testInsertSort3(){
+		System.out.println(Arrays.toString(intArray));
+		SimpleSort.insertSort3(intArray);
+		System.out.println(Arrays.toString(intArray));
+	}
+
+	@Test
+	public void testPlusPlus(){
+		int n = 2;
+		System.out.println(intArray[n++]);
+		int m = 2;
+		System.out.println(intArray[++m]);
 	}
 }

@@ -2,12 +2,15 @@ package com.cfysu.junit;
 
 import com.alibaba.fastjson.JSON;
 import com.cfysu.enums.MsgTypeEnum;
+import com.cfysu.model.CoverAreaVo;
+import com.cfysu.model.PlaceDto;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
@@ -86,6 +89,98 @@ public class UnitTestV2 {
 	public void genTestData(){
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("", "");
+	}
+
+	@Test
+	public void testPlaceDto(){
+
+		List<PlaceDto> proviceList = new ArrayList<PlaceDto>();
+
+		PlaceDto province1 = new PlaceDto();
+		province1.setId("1");
+		province1.setName("河南省");
+
+		PlaceDto province2 = new PlaceDto();
+		province2.setId("2");
+		province2.setName("湖北");
+
+		PlaceDto city1 = new PlaceDto();
+		city1.setId("101");
+		city1.setName("A市");
+
+		PlaceDto city2 = new PlaceDto();
+		city2.setId("102");
+		city2.setName("B市");
+
+		province1.getSubPlaceList().add(city1);
+		province1.getSubPlaceList().add(city2);
+
+		province2.getSubPlaceList().add(city1);
+		province2.getSubPlaceList().add(city2);
+
+		proviceList.add(province1);
+		proviceList.add(province2);
+
+		System.out.println(JSON.toJSONString(proviceList));
+	}
+
+	@Test
+	public void testResolve(){
+		String jsonStr = "[{\"id\":\"1\",\"name\":\"河南省\",\"subPlaceList\":[{\"id\":\"2\",\"name\":\"商丘市\",\"subPlaceList\":[]}]}]";
+
+		List<PlaceDto> placeDtoList = JSON.parseArray(jsonStr, PlaceDto.class);
+
+		System.out.println("res:" + placeDtoList.get(0).getName());
+	}
+
+	@Test
+	public void testJson(){
+		List<CoverAreaVo> coverAreaVoList = new ArrayList<CoverAreaVo>();
+
+		String[] cityIds1 = {"1","2","3"};
+		String[] cityIds2 = {"4","5","6"};
+
+		CoverAreaVo coverAreaVo1 = new CoverAreaVo();
+		coverAreaVo1.setProvinceId("11");
+		coverAreaVo1.setProvinceName("湖北");
+		coverAreaVo1.setCityNames("武汉,黄石,黄冈");
+		coverAreaVo1.setCityIds(cityIds1);
+
+		CoverAreaVo coverAreaVo2 = new CoverAreaVo();
+		coverAreaVo2.setProvinceId("22");
+		coverAreaVo2.setProvinceName("湖南");
+		coverAreaVo2.setCityNames("XX1市,XX2市,XX3市");
+		coverAreaVo2.setCityIds(cityIds2);
+
+		coverAreaVoList.add(coverAreaVo1);
+		coverAreaVoList.add(coverAreaVo2);
+
+		System.out.println(JSON.toJSONString(coverAreaVoList));
+	}
+	@Test
+	public void testWriteSeri(){
+		PlaceDto placeDto = new PlaceDto();
+		placeDto.setName("wuhan");
+		placeDto.setId("1");
+
+		try {
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("E:\\cj.txt"));
+			objectOutputStream.writeObject(placeDto);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void testReadSeri(){
+		try {
+			ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("E:\\cj.txt"));
+			PlaceDto placeDto = (PlaceDto)objectInputStream.readObject();
+			System.out.println(JSON.toJSONString(placeDto));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}catch (ClassNotFoundException e){
+			e.printStackTrace();
+		}
 	}
 	}
 

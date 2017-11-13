@@ -1,13 +1,13 @@
-// insertSort.java
-// demonstrates insertion sort
-// to run this program: C>java InsertSortApp
-//--------------------------------------------------------------
-class ArrayIns
+// selectSort.java
+// demonstrates selection sort
+// to run this program: C>java SelectSortApp
+////////////////////////////////////////////////////////////////
+class ArraySel
    {
    private long[] a;                 // ref to array a
    private int nElems;               // number of data items
 //--------------------------------------------------------------
-   public ArrayIns(int max)          // constructor
+   public ArraySel(int max)          // constructor
       {
       a = new long[max];                 // create the array
       nElems = 0;                        // no items yet
@@ -26,32 +26,40 @@ class ArrayIns
       System.out.println("");
       }
 //--------------------------------------------------------------
-   public void insertionSort()
-      {
-      int in, out;
 
-      for(out=1; out<nElems; out++)     // out is dividing line
+      /**
+       * 每趟内部循环选出最小值，与未有序序列的首个交换位置
+       */
+   public void selectionSort()
+      {
+      int out, in, min;
+
+      for(out=0; out<nElems-1; out++)   // outer loop
          {
-         long temp = a[out];            // remove marked item
-         in = out;                      // start shifts at out
-         while(in>0 && a[in-1] >= temp) // until one is smaller,
-            {
-            a[in] = a[in-1];            // shift item to right
-            --in;                       // go left one position
-            }
-         a[in] = temp;                  // insert marked item
-         }  // end for
-      }  // end insertionSort()
+         min = out;                     // minimum
+         for(in=out+1; in<nElems; in++) // inner loop
+            if(a[in] < a[min] )         // if min greater,
+                min = in;               // we have a new min
+         swap(out, min);                // swap them
+         }  // end for(out)
+      }  // end selectionSort()
 //--------------------------------------------------------------
-   }  // end class ArrayIns
+   private void swap(int one, int two)
+      {
+      long temp = a[one];
+      a[one] = a[two];
+      a[two] = temp;
+      }
+//--------------------------------------------------------------
+   }  // end class ArraySel
 ////////////////////////////////////////////////////////////////
-class InsertSortApp
+class SelectSortApp
    {
    public static void main(String[] args)
       {
       int maxSize = 100;            // array size
-      ArrayIns arr;                 // reference to array
-      arr = new ArrayIns(maxSize);  // create the array
+      ArraySel arr;                 // reference to array
+      arr = new ArraySel(maxSize);  // create the array
 
       arr.insert(77);               // insert 10 items
       arr.insert(99);
@@ -66,8 +74,9 @@ class InsertSortApp
 
       arr.display();                // display items
 
-      arr.insertionSort();          // insertion-sort them
+      arr.selectionSort();          // selection-sort them
 
       arr.display();                // display them again
       }  // end main()
-   }  // end class InsertSortApp
+   }  // end class SelectSortApp
+////////////////////////////////////////////////////////////////

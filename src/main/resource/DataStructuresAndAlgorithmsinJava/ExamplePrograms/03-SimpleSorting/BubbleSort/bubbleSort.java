@@ -26,6 +26,10 @@ class ArrayBub
       System.out.println("");
       }
 //--------------------------------------------------------------
+
+      /**
+       * 每次内部循环后，（比较+交换）最大值有序
+       */
    public void bubbleSort()
       {
       int out, in;
@@ -45,7 +49,7 @@ class ArrayBub
 //--------------------------------------------------------------
    }  // end class ArrayBub
 ////////////////////////////////////////////////////////////////
-class BubbleSortApp
+public class BubbleSortApp
    {
    public static void main(String[] args)
       {
