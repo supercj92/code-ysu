@@ -15,7 +15,7 @@ public class ReflectTest {
             System.out.println("field:" + field);
         }
 
-        Method[] methods = clazz.getMethods();
+        Method[] methods = clazz.getDeclaredMethods();
         for(Method method : methods){
             System.out.println("method:" + method);
         }
@@ -24,6 +24,11 @@ public class ReflectTest {
             Method bark = clazz.getMethod("bark", String.class);
             Object o = clazz.newInstance();
             bark.invoke(o, new Object[]{"呵呵..."});
+
+            //调用私有方法
+            Method eat = clazz.getDeclaredMethod("eat", String.class);
+            eat.setAccessible(true);
+            eat.invoke(o, new Object[]{"狗粮..."});
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
