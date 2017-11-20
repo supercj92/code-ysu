@@ -182,6 +182,25 @@ public class UnitTestV2 {
 			e.printStackTrace();
 		}
 	}
+
+	@Test
+	public void testFor(){
+		List<PlaceDto> placeDtoList = new ArrayList<PlaceDto>();
+		PlaceDto placeDto = new PlaceDto();
+		placeDto.setId("1");
+		placeDto.setName("one");
+		PlaceDto placeDto2 = new PlaceDto();
+		placeDto2.setId("2");
+		placeDto2.setName("two");
+		placeDtoList.add(placeDto);
+		placeDtoList.add(placeDto2);
+
+		for(PlaceDto placeDtoItem : placeDtoList){
+			//placeDtoItem = null;
+			placeDtoItem.setId("33");
+		}
+		System.out.println(JSON.toJSONString(placeDtoList));
+	}
 	}
 
 

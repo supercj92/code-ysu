@@ -15,7 +15,7 @@ public class SimpleSort {
 
 	public static void bubbleSort2(int[] sortArray){
 		for(int i = sortArray.length -1;i > 0;i--){
-			for(int j = 0;j < i;j++){
+            for(int j = 0;j < i;j++){
 				if(sortArray[j] > sortArray[j + 1]){
 					swap(j, j+1, sortArray);
 				}
