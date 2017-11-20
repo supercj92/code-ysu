@@ -2,7 +2,7 @@ package com.cfysu.proxy;
 
 public class DogImpl implements Dog{
 
-    private String name;
+    private String name ="小白";
 
     @Override
     public void bark(String str) {
