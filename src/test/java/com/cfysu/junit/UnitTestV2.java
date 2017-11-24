@@ -17,6 +17,9 @@ import java.util.*;
 
 public class UnitTestV2 {
 
+	static {
+
+	}
 	private static final Logger LOGGER = LoggerFactory.getLogger(UnitTestV2.class);
 
 	private Random random = new Random();
@@ -200,6 +203,23 @@ public class UnitTestV2 {
 			placeDtoItem.setId("33");
 		}
 		System.out.println(JSON.toJSONString(placeDtoList));
+	}
+
+	@Test
+	public void testSplit(){
+		String shopIdStr = "155";
+		String[] shopIdArray = shopIdStr.split(",");
+		for(String shopId : shopIdArray){
+			System.out.println("shopId:" + shopId);
+		}
+	}
+
+	@Test
+	public void testCount(){
+		double outPut = 848.48 + 1236.18 + 1803.24 + 1676 + 1795.72;
+		double inPut = 394.44 + 866.65 + 1490.71 + 1378.98;
+		double[] parmArray = {outPut, inPut, (outPut - inPut)};
+		LOGGER.warn("支出:{}，收入:{},净支出:{}", parmArray);
 	}
 	}
 

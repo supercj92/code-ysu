@@ -2,7 +2,7 @@ package com.cfysu.datastructure;
 
 import org.junit.Test;
 
-import com.cfysu.datastructure.Stack;
+import com.cfysu.datastructure.sequence.array.Stack;
 //import com.alibaba.fastjson.JSONArray;
 
 import java.io.BufferedReader;

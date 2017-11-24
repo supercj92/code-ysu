@@ -1,4 +1,4 @@
-package com.cfysu.datastructure;
+package com.cfysu.datastructure.sequence.array;
 
 import org.apache.log4j.Logger;
 

@@ -1,4 +1,4 @@
-package com.cfysu.datastructure;
+package com.cfysu.datastructure.sequence.array;
 
 /**
  * Created by longcangjian on 2017/6/8.

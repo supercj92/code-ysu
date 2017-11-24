@@ -1,5 +1,6 @@
 package com.cfysu.datastructure;
 
+import com.cfysu.datastructure.sequence.array.Queue;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 

@@ -16,7 +16,11 @@ public class JDBCUsage {
         Connection connection = jdbcUsage.getConnection();
         try {
             //jdbcUsage.insertBinaryData(connection);
-            jdbcUsage.readBinaryData(connection);
+            //jdbcUsage.readBinaryData(connection);
+            long start = System.currentTimeMillis();
+            jdbcUsage.insertUser(connection);
+            long end = System.currentTimeMillis();
+            System.out.println("耗时：" + (end -start));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -79,6 +83,22 @@ public class JDBCUsage {
         }
     }
 
+    public void insertUser(Connection connection){
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO `bbc_order` (`orderId`,`bpin`,`cpin`,`userId`,`shopId`,`openid`,`orderDesc`,`orderType`,`orderPayType`,`freightFreeFee`,`orderPayFeeShipping`,`productAmount`,`productDiscountAmount`,`couponId`,`couponAmount`,`couponSettledStatus`,`couponSettledTime`,`orderPayFeeTotal`,`activityId`,`activitySourceId`,`orderState`,`orderCreateTime`,`orderCreateTimeNew`,`orderCancelTime`,`orderEndTime`,`orderEndTimeNew`,`lastUpdateTime`,`whoPayShippingfee`,`deliveryType`,`itemTitleList`,`mailType`,`payId`,`sellerConsignmentTimeNew`,`payTime`,`payReturnTime`,`orderSource`,`sellerNick`,`buyerNick`,`buyerBuyRemark`,`orderVersion`,`hideFlag`,`shopContact`,`provinceId`,`cityId`,`countyId`,`townId`,`userName`,`address`,`telphone`,`closeReason`,`closeReasonDesc`,`tradeCount`,`userIp`,`timeoutItemFlag`,`timeoutStartTime`,`timeLeft`,`syncStatus`,`SkutotalAmount`,`sellerConsignmentTime`,`mOrderNo`,`custAmount`,`zlAmount`,`mlAmount`,`cashier`,`isPrint`,`printTime`,`isDelete`) VALUES (?,'xtl_zyvpSSH','112233',17979,6,'oSdS_s6FwWwcY77bXdzArfCNV8xQ','[11867]',0,1,0,0,0,0,NULL,NULL,NULL,NULL,180,NULL,NULL,6,1503985395,'2017-10-10 13:24:53',NULL,1504160609,NULL,1504160609,0,0,'',0,11868,NULL,0,0,1,'','','',1,0,'18912345678',0,0,0,0,'朱涛','洪山区珞雄路19号','13971144810',100,'订单流程正常结束',1,'127.0.0.1',0,1499408374,172800,0,180,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);");
+
+            //insert into bbc.bbc_user (id,wxOpenId, wxUserName, wxSex, wxHeadImgUrl, wxCountry, wxProvince, wxCity, jdUserName, remark, createTime, updateTime,cardNum)" +
+            //"values(null, ?, 'xxxx', 1, 'http://wx.qlogo.cn', 'zhong', 'hb', 'wh', null, 'remark', now(), now(),null);
+            for(int i = 0;i < 3000;i++){
+                preparedStatement.setInt(1, 890000 + i);
+                preparedStatement.execute();
+            }
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     public Connection getConnection(){
         //1.加载驱动
         try {
@@ -89,7 +109,7 @@ public class JDBCUsage {
         //2.获取连接
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ssm", "root", "root");
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1/bbc", "root", "root");
         } catch (SQLException e) {
             e.printStackTrace();
         }
