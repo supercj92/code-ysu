@@ -1,5 +1,6 @@
 package com.cfysu.thread;
 
+import java.util.TreeMap;
 import java.util.concurrent.*;
 
 /**
@@ -20,6 +21,8 @@ public class ExecutorServiceDemo {
         Callable<Integer> thread = new CallableThread();
         Future<Integer> callTread = pool.submit(thread);
         Future<?> runTread = pool.submit(new RunnableThread());
+        FutureTask<Integer> task = new FutureTask<Integer>(thread);
+        new Thread(task).start();
         /*try {
             //此方法会阻塞主线程，等待其他线程执行结束
             //Integer res1 = callTread.get();

@@ -13,61 +13,69 @@ import java.util.concurrent.FutureTask;
 /**
  * Created by cj on 17-6-25.
  */
-public class SocketClient implements Callable{
-    private static final Logger LOGGER = Logger.getLogger(SocketClient.class);
+public class SocketClient {
 
-    private PrintWriter printWriter;
-    private BufferedReader bufferedReader;
-    public SocketClient(PrintWriter printWriter, BufferedReader bufferedReader){
-        this.printWriter = printWriter;
-        this.bufferedReader = bufferedReader;
-    }
+    private static final Logger LOGGER = Logger.getLogger(SocketClient.class);
 
     public static void main(String[] args){
         try {
-            Socket socket = new Socket("127.0.0.1", 8888);
-            PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
-            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-            //启动线程接收消息
-            new Thread(new FutureTask<String>(new SocketClient(writer, reader))).start();
-            //主线程，用户发送消息
-            Scanner scanner = new Scanner(System.in);
-            while (true){
-                String userMsg = scanner.next();
-                if("bye".equals(userMsg)){
-                    LOGGER.info("---用户退出---");
-                    return;
-                }
-                writer.println(userMsg);
-                writer.flush();
-                LOGGER.info("用户信息已发出");
-            }
-        }catch (Exception e){
-            e.printStackTrace();
+            new SocketClient().startClient();
+        } catch (IOException e) {
+            LOGGER.error("IO异常", e);
         }
     }
 
-    @Override
-    public String call() {
-        int msgCount = 0;
+    public void startClient() throws IOException {
+        Socket socket = new Socket("127.0.0.1", 8888);
+        PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+        //启动线程接收消息
+        new Thread(new FutureTask<String>(new Receiver(reader))).start();
+        //主线程，用户发送消息
+        Scanner scanner = new Scanner(System.in);
         while (true){
-            //Thread.sleep(10000);
-            //msgCount++;
-            //printWriter.println("---thread msg---" + msgCount);
-            //printWriter.flush();
-            LOGGER.info("等待服务器回复消息");
-            String receiveMsg = null;
-            try {
-                receiveMsg = bufferedReader.readLine();
-            } catch (IOException e) {
-                e.printStackTrace();
+            String userMsg = scanner.next();
+            if("bye".equals(userMsg)){
+                LOGGER.info(Thread.currentThread().getName() + ":bye bye");
+                break;
             }
-            if(null == receiveMsg){
-                LOGGER.info("客户端收消息线程退出");
-                return "exit";
+            writer.println(userMsg);
+            writer.flush();
+            LOGGER.info(Thread.currentThread().getName() + ":用户信息已发出");
+        }
+        LOGGER.info(Thread.currentThread().getName() + ":主线程退出");
+    }
+
+    private class Receiver implements Callable<String>{
+
+        private BufferedReader reader;
+
+        public Receiver(BufferedReader reader){
+            this.reader = reader;
+        }
+
+        @Override
+        public String call() {
+            int msgCount = 0;
+            while (true){
+                //Thread.sleep(10000);
+                //msgCount++;
+                //printWriter.println("---thread msg---" + msgCount);
+                //printWriter.flush();
+                LOGGER.info(Thread.currentThread().getName() + ":等待服务器回复消息");
+                String receiveMsg = null;
+                try {
+                    receiveMsg = reader.readLine();
+                } catch (IOException e) {
+                    LOGGER.error("服务器端退出", e);
+                }
+                if(null == receiveMsg){
+                    LOGGER.info(Thread.currentThread().getName() + ":客户端收消息线程退出");
+                    return "exit";
+                }
+                LOGGER.info(Thread.currentThread().getName() + ":收到新消息===>>>" + receiveMsg);
             }
-            LOGGER.info("---收到新消息---:" + receiveMsg);
         }
     }
 }

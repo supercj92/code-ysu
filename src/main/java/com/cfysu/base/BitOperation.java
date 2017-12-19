@@ -2,6 +2,8 @@ package com.cfysu.base;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class BitOperation {
 
     @Test
@@ -15,5 +17,9 @@ public class BitOperation {
         System.out.println(5 ^ 4);
         System.out.println(5 & 4);
         System.out.println(5 | 4);
+    }
+    @Test
+    public void testExec() throws IOException {
+        Process process = Runtime.getRuntime().exec("java");
     }
 }

@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by cj on 2017/8/24.
  * 有死锁的问题
+ * 线程通信：传统的wait()、使用condition、阻塞队列、管道流
  * */
 public class ThreadCommunication {
     public static void main(String[] args) throws Exception{

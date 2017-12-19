@@ -221,6 +221,7 @@ public class UnitTestV2 {
 		double[] parmArray = {outPut, inPut, (outPut - inPut)};
 		LOGGER.warn("支出:{}，收入:{},净支出:{}", parmArray);
 	}
+
 	}
 
 

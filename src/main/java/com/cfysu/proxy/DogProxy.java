@@ -4,6 +4,9 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+/**
+ * jdk动态代理，被代理类必须实现接口
+ */
 public class DogProxy implements InvocationHandler{
 
     private Object target;

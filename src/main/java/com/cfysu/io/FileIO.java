@@ -1,4 +1,4 @@
-package com.cfysu.file;
+package com.cfysu.io;
 
 import java.io.*;
 import java.util.Scanner;

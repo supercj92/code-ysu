@@ -37,7 +37,7 @@ public class JDBCUsage {
         int count;
         InputStream inputStream = null;
         while(resultSet.next()){
-            inputStream = resultSet.getBinaryStream("file");
+            inputStream = resultSet.getBinaryStream("io");
             while ((count = inputStream.read(buffer)) != -1){
                 fileOutputStream.write(buffer, 0, count);
             }

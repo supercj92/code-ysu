@@ -38,7 +38,7 @@ class ArraySh
 
       while(h>0)                     // decreasing h, until h=1
          {
-                                     // h-sort the file
+                                     // h-sort the io
          for(outer=h; outer<nElems; outer++)
             {
             temp = theArray[outer];
