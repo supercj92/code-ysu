@@ -1,5 +1,4 @@
 
 /.idea/
 target/
-/ysu-code.iml
-将删除 code-ysu.iml
+/code-ysu.iml
