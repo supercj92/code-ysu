@@ -108,7 +108,7 @@ public class SocketServer {
                     sendString.append("Content-Type:text/html;charset=utf-8\r\n");
                     sendString.append("\r\n");// 报文头结束后加一个空行
 
-                    writer.write(sendString.append("haha").toString());
+                    writer.write(sendString.append(stringBuilder).toString());
                     writer.flush();
                     writer.close();
                 } catch (IOException e) {

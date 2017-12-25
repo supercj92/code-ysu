@@ -13,6 +13,9 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 import java.util.*;
 
 public class UnitTestV2 {
@@ -222,6 +225,19 @@ public class UnitTestV2 {
 		LOGGER.warn("支出:{}，收入:{},净支出:{}", parmArray);
 	}
 
+	@Test
+	public void testCharSize() throws UnsupportedEncodingException {
+		String a = "a";
+
+		char[] chars = a.toCharArray();
+
+		System.out.println(chars.length);
+
+		System.out.println("utf-16 size:" + a.getBytes("gbk").length);
+
+		System.out.println("utf-8 size:" + a.getBytes("utf-8").length);
 	}
+
+}
 
 

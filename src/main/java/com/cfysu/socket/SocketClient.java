@@ -26,7 +26,7 @@ public class SocketClient {
     }
 
     public void startClient() throws IOException {
-        Socket socket = new Socket("127.0.0.1", 8888);
+        Socket socket = new Socket("127.0.0.1", 9999);
         PrintWriter writer = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 

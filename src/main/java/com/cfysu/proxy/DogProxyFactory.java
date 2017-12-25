@@ -7,11 +7,11 @@ import java.lang.reflect.Proxy;
 /**
  * jdk动态代理，被代理类必须实现接口
  */
-public class DogProxy implements InvocationHandler{
+public class DogProxyFactory implements InvocationHandler{
 
     private Object target;
 
-    public Object bind(Object target){
+    public Object createProxy(Object target){
         this.target = target;
 
         return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
