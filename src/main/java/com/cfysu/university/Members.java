@@ -1,9 +1,9 @@
 package com.cfysu.university;
 import java.util.*;
-//̹����
+
 class Tank{
 	
-	//̹�˺�������
+	//̹状态
 	int x=0;
 	int y=0;
 	int direct=0;
@@ -15,7 +15,7 @@ class Tank{
 	Bullet b=null;
 	
 	public void fire(int derict){
-		//�����ӵ�
+		//根据坦克的方向初始化子弹坐标
 		switch(derict){
 		case 0:
 		b=new Bullet(x+9,y,derict);
@@ -88,7 +88,7 @@ class Tank{
 	}
 }
 
-//�ҵ�̹��
+//自己的坦克
 class Hero extends Tank{
 	
 	
@@ -98,7 +98,7 @@ class Hero extends Tank{
 	}
 	
 }
-//���˵�̹��
+//敌人的坦克
 class Enemy extends Tank implements Runnable{
 	
 	public Enemy(int x,int y){
@@ -163,15 +163,14 @@ class Enemy extends Tank implements Runnable{
 	}
 	
 }
-//�ӵ�
-class Bullet implements Runnable{
+//子弹也是一个线程
+class   Bullet implements Runnable{
 	
 	
 	int x;
 	int y;
 	boolean isAlive=true;
 	int derict;
-	//�ӵ��ٶ�
 	int speed=2;
 	
 	
@@ -207,7 +206,7 @@ class Bullet implements Runnable{
 				x-=speed;
 				break;
 			}
-			System.out.println("x����:"+x+"y����:"+y);
+			System.out.println("子弹的x坐标:"+x+"子弹的y坐标:"+y);
 			if(x>400||x<0||y>300||y<0){
 				isAlive=false;
 				System.out.println("------------------------------->break");

@@ -1,7 +1,7 @@
 package com.cfysu.tankgame.util;
 
 public enum DirectionEnum {
-	UP(1, "ÉÏ"), DOWN(2, "ÏÂ"), LEFT(3, "×ó"), RIGHT(4, "ÓÒ");
+	UP(1, "ä¸Š"), DOWN(2, "ä¸‹"), LEFT(3, "å·¦"), RIGHT(4, "å³");
 	private int key;
 	private String direction;
 	private DirectionEnum(int key, String direction) {

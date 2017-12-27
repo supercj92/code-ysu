@@ -15,7 +15,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 public class NettyClient {
     public static void main(String[] args) throws Exception {
         String host = "localhost";
-        int port = Integer.parseInt("8080");
+        int port = Integer.parseInt("6666");
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {

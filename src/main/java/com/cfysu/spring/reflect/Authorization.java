@@ -1,4 +1,4 @@
-package com.cfysu.reflect;
+package com.cfysu.spring.reflect;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

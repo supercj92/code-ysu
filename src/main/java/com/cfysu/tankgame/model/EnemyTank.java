@@ -9,7 +9,7 @@ public class EnemyTank extends BaseTank implements Runnable{
 
 	public EnemyTank(int position_x, int position_y) {
 		super(position_x, position_y, Color.RED);
-		//ÉèÖÃµĞ·½Ì¹¿ËËÙ¶È
+		//è®¾ç½®é€Ÿåº¦
 		super.setSpeed(2);
 		super.setDirection(DirectionEnum.DOWN);
 	}
@@ -21,7 +21,7 @@ public class EnemyTank extends BaseTank implements Runnable{
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			//1.Ëæ»úÒÆ¶¯
+			//1.æ–¹å‘
 			Random random = new Random();
 			int num = random.nextInt(100);
 			if(num < 30){
@@ -32,7 +32,7 @@ public class EnemyTank extends BaseTank implements Runnable{
 				super.move(DirectionEnum.DOWN);
 			}
 			
-			//2.·¢Éä×Óµ¯
+			//2.æ˜¯å¦å¼€ç«
 			if(this.getBullets().size() < 6){
 				super.fire();
 			}

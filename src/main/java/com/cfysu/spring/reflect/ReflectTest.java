@@ -1,6 +1,5 @@
-package com.cfysu.reflect;
+package com.cfysu.spring.reflect;
 
-import com.cfysu.model.CoverAreaVo;
 import com.cfysu.proxy.DogImpl;
 
 import java.lang.reflect.Field;

@@ -11,7 +11,7 @@ import com.cfysu.tankgame.model.Bullet;
 public class DrawTankUtil {
 
 	public static void drawTank(Graphics painter, BaseTank tank){
-		//»­tank
+		//æ ¹æ®ä¸åŒçš„æ–¹å‘,ç”»å‡ºå¦å…‹
 		switch (tank.getDirection()) {
 		case UP:
 			drawUpTank(painter, tank);
@@ -28,7 +28,7 @@ public class DrawTankUtil {
 		default:
 			break;
 		}
-		//»­tankµÄ×Óµ¯
+		//ç”»å‡ºå­å¼¹
 		Iterator<Bullet> iterable = tank.getBullets().iterator();
 		while(iterable.hasNext()){
 			Bullet bullet = iterable.next();
@@ -45,21 +45,19 @@ public class DrawTankUtil {
 	}
 	
 	private static void drawUpTank(Graphics painter, BaseTank tank){
-		//ÉèÖÃÌ¹¿ËÑÕÉ«
+		//è®¾ç½®é¢œè‰²
 		painter.setColor(tank.getColor());
-		//»­³öÌ¹¿Ë
-		//1.»­³ö×ó±ßµÄ¾ØĞÎ
 		
 		painter.fill3DRect(tank.getPosition_x(), tank.getPosition_y(), 5, 30,false);
-		//2.ÓÒ±ß
+		//2.
 		painter.fill3DRect(tank.getPosition_x()+15, tank.getPosition_y(), 5, 30,false);
-		//3.ÖĞ¼ä
+		//3.
 		painter.fill3DRect(tank.getPosition_x()+5, tank.getPosition_y()+5, 10, 20,false);
 		
-		//4.Ô²ĞÎ
+		//4.ç”»ç›–å­
 		painter.fillOval(tank.getPosition_x()+5, tank.getPosition_y()+10, 10, 10);
 		
-		//5.ÅÚÍ²
+		//5.ç”»ç‚®ç­’
 		painter.drawLine(tank.getPosition_x()+9, tank.getPosition_y()+15, tank.getPosition_x()+9, tank.getPosition_y());
 	}
 	
@@ -67,15 +65,15 @@ public class DrawTankUtil {
 		painter.setColor(tank.getColor());
 		//1.left
 		painter.fill3DRect(tank.getPosition_x(), tank.getPosition_y(), 5, 30,false);
-		//2.ÓÒ±ß
+		//2.
 		painter.fill3DRect(tank.getPosition_x()+15, tank.getPosition_y(), 5, 30,false);
-		//3.ÖĞ¼ä
+		//3.
 		painter.fill3DRect(tank.getPosition_x()+5, tank.getPosition_y()+5, 10, 20,false);
 		
-		//4.Ô²ĞÎ
+		//4.
 		painter.fillOval(tank.getPosition_x()+5, tank.getPosition_y()+10, 10, 10);
 		
-		//5.ÅÚÍ²
+		//5.
 		painter.drawLine(tank.getPosition_x()+9, tank.getPosition_y()+15, tank.getPosition_x()+9, tank.getPosition_y()+30);
 	}
 	private static void drawLeftTank(Graphics painter, BaseTank tank){

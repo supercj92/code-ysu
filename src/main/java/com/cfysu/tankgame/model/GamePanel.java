@@ -8,10 +8,8 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
-import com.alibaba.fastjson.JSON;
 import com.cfysu.tankgame.util.DirectionEnum;
 import com.cfysu.tankgame.util.DrawTankUtil;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 
@@ -22,9 +20,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	public GamePanel(){
 		this.setBackground(Color.BLACK);
 		this.repaint();
-		//Éú³ÉµĞÈË
+		//ç”Ÿæˆæ•Œäººå¦å…‹
 		generateEnemy(enemyTanks);
-		//Éú³ÉÎÒµÄtank
+		//ç”Ÿæˆè‡ªå·±å¦å…‹
 		heroTank = new HeroTank(200, 200);
 	}
 
@@ -42,12 +40,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	@Override
 	public void paint(Graphics painter) {
 		super.paint(painter);
-		//»­³öµĞ·½tank
+		//ç”»å‡ºå¦å…‹
 		for(EnemyTank enemyTank : enemyTanks){
 			DrawTankUtil.drawTank(painter, enemyTank);
 		}
 		
-		//»­³ö×Ô¼ºµÄtank
+		//ç”»å‡ºè‡ªå·±çš„å¦å…‹
 		DrawTankUtil.drawTank(painter, heroTank);
 		//System.out.println(JSON.toJSONString(tank));
 		

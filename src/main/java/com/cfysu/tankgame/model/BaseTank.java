@@ -77,7 +77,7 @@ public class BaseTank implements Tank{
 			}
 		}
 		
-		System.out.println("有效的子弹个数：" + aliveNum);
+		System.out.println("鐩墠瀛樻椿鐨勫瓙寮逛釜鏁帮細" + aliveNum);
 	}
 	
 	public int getPosition_x() {
