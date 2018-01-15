@@ -18,7 +18,7 @@ public class ThreadCommunication {
             private AtomicInteger threadNum = new AtomicInteger(1);
             @Override
             public Thread newThread(Runnable r) {
-                return new Thread(r, "threadPool-thread-" + threadNum.getAndIncrement());
+                return new Thread(r, "communication-thread-" + threadNum.getAndIncrement());
             }
         });
         //三个存钱的线程
