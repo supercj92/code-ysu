@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.cfysu.enums.MsgTypeEnum;
 import com.cfysu.model.CoverAreaVo;
 import com.cfysu.model.PlaceDto;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
@@ -236,6 +237,32 @@ public class UnitTestV2 {
 		System.out.println("utf-16 size:" + a.getBytes("gbk").length);
 
 		System.out.println("utf-8 size:" + a.getBytes("utf-8").length);
+	}
+
+	@Test
+	public void testArrayList(){
+		List<Integer> integerList = new ArrayList<>();
+		integerList.add(1);
+		System.out.println("intSize:" + integerList.size());
+		System.out.println(new ArrayList<String>(100).size());
+	}
+
+	@Test
+	public void testArrayList2(){
+		List<String> strList = Lists.newArrayList();
+		for(int i = 0;i < 10;i++){
+			strList.add(Integer.toString(i));
+		}
+		Iterator<String> iterator = strList.iterator();
+		while (iterator.hasNext()){
+			String next = iterator.next();
+			if(next.equals("5")){
+				//抛出ConcurrentModificationException
+				//strList.remove("5");
+				iterator.remove();
+			}
+		}
+		System.out.println(JSON.toJSONString(strList));
 	}
 
 }

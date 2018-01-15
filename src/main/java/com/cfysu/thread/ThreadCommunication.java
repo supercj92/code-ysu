@@ -1,9 +1,7 @@
 package com.cfysu.thread;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by cj on 2017/8/24.
@@ -16,7 +14,13 @@ public class ThreadCommunication {
         Account account = new Account();
         Callable saveThread = new SaveThread(account);
         Callable takeThread = new TakeThread(account);
-        ExecutorService pool = Executors.newFixedThreadPool(4);
+        ExecutorService pool = Executors.newFixedThreadPool(4, new ThreadFactory() {
+            private AtomicInteger threadNum = new AtomicInteger(1);
+            @Override
+            public Thread newThread(Runnable r) {
+                return new Thread(r, "threadPool-thread-" + threadNum.getAndIncrement());
+            }
+        });
         //三个存钱的线程
         pool.submit(saveThread);
         pool.submit(saveThread);

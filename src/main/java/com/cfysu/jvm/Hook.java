@@ -3,6 +3,7 @@ package com.cfysu.jvm;
 public class Hook {
     public static void main(String[] args){
         System.out.println("jvm started and shutdowning.hook is running...");
+        System.out.println(String.format("cpu核数:%d", Runtime.getRuntime().availableProcessors()));
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             @Override
             public void run() {
