@@ -265,6 +265,11 @@ public class UnitTestV2 {
 		System.out.println(JSON.toJSONString(strList));
 	}
 
+	@Test
+    public void testRandom(){
+        System.out.println(new Random().nextInt(10));
+    }
+
 }
 
 

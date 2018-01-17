@@ -11,4 +11,6 @@ public interface UserMBean {
     void setPassword(String password);
 
     int add(int x,int y);
+
+    String getDes();
 }

@@ -3,6 +3,14 @@ package com.cfysu.jmx;
 public class User implements UserMBean{
     private String username;
     private String password;
+
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+    public String getDes(){
+        return username + ":" + password;
+    }
     public String getUsername() {
         return username;
     }
