@@ -1,12 +1,10 @@
 package com.cfysu.tankgame.util;
 
-import java.awt.Graphics;
-import java.awt.Paint;
-import java.util.Iterator;
-
-import com.alibaba.fastjson.JSON;
 import com.cfysu.tankgame.model.BaseTank;
 import com.cfysu.tankgame.model.Bullet;
+
+import java.awt.*;
+import java.util.Iterator;
 
 public class DrawTankUtil {
 

@@ -2,8 +2,11 @@ package com.cfysu.tankgame.model;
 
 import java.awt.Color;
 import java.util.Vector;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.cfysu.tankgame.util.DirectionEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BaseTank implements Tank{
 
@@ -13,6 +16,9 @@ public class BaseTank implements Tank{
 	private int speed;
 	private volatile DirectionEnum direction;
 	private Vector<Bullet> bullets = new Vector<Bullet>();
+	protected int bulletNumPer = 0;
+	private static AtomicInteger bulletNum = new AtomicInteger(0);
+	private static final Logger LOGGER = LoggerFactory.getLogger(BaseTank.class);
 	public BaseTank(int position_x, int position_y, Color color) {
 		super();
 		this.position_x = position_x;
@@ -65,8 +71,9 @@ public class BaseTank implements Tank{
 		default:
 			break;
 		}
-		Thread bulletThread = new Thread(bullet);
+		Thread bulletThread = new Thread(bullet, "bullet-"  + Thread.currentThread().getName() + "-size:" + bullets.size() + "-总数:" + bulletNum.getAndIncrement());
 		bulletThread.start();
+		LOGGER.info(Thread.currentThread().getName() + "启动了新线程[" + bulletThread.getName() + "]。子弹数量：" + (++bulletNumPer));
 	}
 	
 	public void getAliveBulletNum(){

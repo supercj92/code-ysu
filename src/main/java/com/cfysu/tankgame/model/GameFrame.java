@@ -13,7 +13,7 @@ public class GameFrame extends JFrame{
 		this.setHeight(height);
 		this.setWidth(width);
 		GamePanel gamePanel = new GamePanel();
-		Thread panel = new Thread(gamePanel);
+		Thread panel = new Thread(gamePanel, "gamePanel");
 		panel.start();
 		this.add(gamePanel);
 		this.addKeyListener(gamePanel);

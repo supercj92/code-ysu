@@ -84,7 +84,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 	private void generateEnemy(Vector<EnemyTank> enemyTanks){
 		for(int i = 0;i < this.enemyNum;i++){
 			EnemyTank enemyTank = new EnemyTank(100 + i*100, 100);
-			Thread enemyThread = new Thread(enemyTank);
+			Thread enemyThread = new Thread(enemyTank, "enemyTank-" + i);
 			enemyThread.start();
 			enemyTanks.add(enemyTank);
 		}
