@@ -17,6 +17,7 @@ public class AuthorizationAop {
     @Pointcut("execution (* com.cfysu.spring.reflect.OperateData.*(..))")
     public void pointCut(){}
 
+    //@Around(value = "execution (* com.cfysu.spring.reflect.OperateData.*(..))")
     @Around("pointCut()")
     public Object checkPrivilege(ProceedingJoinPoint point) throws Throwable {
         //获取参数

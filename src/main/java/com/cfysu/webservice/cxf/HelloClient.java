@@ -1,9 +1,12 @@
-package com.cfysu.webservice;
+package com.cfysu.webservice.cxf;
 
 
-import com.cfysu.webservice.service.HelloService;
+import com.cfysu.webservice.cxf.service.HelloService;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 
+/**
+ * 基于apache cxf实现WebService
+ */
 public class HelloClient {
     public static void main(String[] args){
         JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean();

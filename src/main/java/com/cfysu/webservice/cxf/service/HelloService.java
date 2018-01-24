@@ -1,4 +1,4 @@
-package com.cfysu.webservice.service;
+package com.cfysu.webservice.cxf.service;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;

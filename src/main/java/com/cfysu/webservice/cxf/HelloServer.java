@@ -1,6 +1,6 @@
 package com.cfysu.webservice;
 
-import com.cfysu.webservice.service.impl.HelloServiceImpl;
+import com.cfysu.webservice.cxf.service.impl.HelloServiceImpl;
 
 import javax.xml.ws.Endpoint;
 

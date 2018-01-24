@@ -1,15 +1,15 @@
 package com.cfysu.junit;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -204,4 +204,38 @@ public class UnitTest {
 		}
 	}
 
+	@Test
+	public void testDouble(){
+		//double 运算 精度损失
+		System.out.println("4.015 * 100 :" + 4.015 * 100);
+	}
+
+	@Test
+	public void testDecimal(){
+		BigDecimal a = new BigDecimal("4.015");
+		BigDecimal b = new BigDecimal("100");
+		BigDecimal c = a.multiply(b);
+		System.out.println(c);
+	}
+
+	@Test
+	public void testMatch(){
+		String content = "是的；感觉到了房管局的；法规及对方进攻18354689566而极乐空15578546321间发电量分理处不肯放到 ";
+		Pattern telNum = Pattern.compile("\\d{11}");
+		Matcher matcher = telNum.matcher(content);
+		while (matcher.find()){
+			System.out.println(matcher.group());
+		}
+	}
+
+	@Test
+	public void testDateFormat() throws ParseException {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
+		String dateStr = simpleDateFormat.format(new Date());
+		System.out.println("dateStr:" + dateStr);
+
+		String str = "2016/02/02 12:12:12";
+		Date date = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss").parse(str);
+		System.out.println(simpleDateFormat.format(date));
+	}
 }

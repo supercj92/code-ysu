@@ -267,8 +267,18 @@ public class UnitTestV2 {
 
 	@Test
     public void testRandom(){
-        System.out.println(new Random().nextInt(10));
+		//如果种子相同，会产生相同的伪随机数
+        System.out.println(new Random(50).nextInt(10));
+		System.out.println(new Random(50).nextInt(10));
     }
+
+    @Test
+	public void testRuntime() throws IOException {
+    	Runtime runtime = Runtime.getRuntime();
+    	//调用系统命令
+    	runtime.exec("calc.exe");
+    	runtime.exec("notepad.exe");
+	}
 
 }
 
