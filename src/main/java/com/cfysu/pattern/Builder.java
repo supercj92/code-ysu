@@ -1,4 +1,4 @@
-package com.cfysu.mode;
+package com.cfysu.pattern;
 
 public interface Builder<T> {
     T build();

@@ -2,6 +2,7 @@ package com.cfysu.junit;
 
 import com.alibaba.fastjson.JSON;
 import com.cfysu.enums.MsgTypeEnum;
+import com.cfysu.model.Car;
 import com.cfysu.model.CoverAreaVo;
 import com.cfysu.model.PlaceDto;
 import com.google.common.collect.Lists;
@@ -278,6 +279,21 @@ public class UnitTestV2 {
     	//调用系统命令
     	runtime.exec("calc.exe");
     	runtime.exec("notepad.exe");
+	}
+
+	@Test
+	public void testGeneric(){
+    	//ArrayList<String>()并不是List<Object>的子类
+    	//List<Object> objectList = new ArrayList<String>();
+		List list = new ArrayList();
+		List arrayList = new ArrayList<String>();
+
+		Car[] cars = new Car[2];
+		Ford[] fords = new Ford[2];
+
+		//fail at runtime
+		Object[] objects = new Integer[2];
+		objects[0] = "word";
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.cfysu.mode;
+package com.cfysu.pattern;
 
 import java.io.IOException;
 
