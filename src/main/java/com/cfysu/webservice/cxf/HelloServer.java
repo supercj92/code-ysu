@@ -1,4 +1,4 @@
-package com.cfysu.webservice;
+package com.cfysu.webservice.cxf;
 
 import com.cfysu.webservice.cxf.service.impl.HelloServiceImpl;
 
