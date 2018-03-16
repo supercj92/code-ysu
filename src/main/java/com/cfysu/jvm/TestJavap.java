@@ -7,5 +7,8 @@ public class TestJavap {
         String a = "a";
         String b = "b";
         String c = a + b;
+        while (true){
+            //死循环导致cpu使用率飚高
+        }
     }
 }

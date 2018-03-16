@@ -198,6 +198,13 @@
             <version>r09-jarjar</version>
         </dependency>
         <!--hbase end-->
+
+        <!--batik-->
+        <dependency>
+            <groupId>batik-all</groupId>
+            <artifactId>batik-all</artifactId>
+            <version>1.6</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>code-ysu</finalName>
