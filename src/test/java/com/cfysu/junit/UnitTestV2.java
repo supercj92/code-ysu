@@ -12,6 +12,7 @@ import com.cfysu.model.Ford;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sound.midi.Soundbank;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -296,6 +297,41 @@ public class UnitTestV2 {
 		objects[0] = "word";
 	}
 
+	@Test
+	@SuppressWarnings("static-access")
+	public void testNull(){
+		//null可以强制类型转换
+		String str = (String)null;
+		System.out.println(str);
+
+		//可以调用静态方法
+		((UnitTestV2)null).handler1();
+
+		//不可以调用实例方法
+		((UnitTestV2)null).handler2();
+	}
+
+	public static void handler1(){
+		System.out.println("handler1");
+	}
+
+	public void handler2(){
+		System.out.println("handler2");
+	}
+
+	@Test
+	public void testttt(){
+		boolean res = (1==1);
+		System.out.println(res);
+	}
+
+	@Test
+	public void testClassloader(){
+		ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+		System.out.println(contextClassLoader.getParent());
+		System.out.println(contextClassLoader.getParent().getParent());
+		//System.out.println(contextClassLoader.getParent().getParent().getParent().getParent());
+	}
 }
 
 

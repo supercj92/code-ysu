@@ -24,8 +24,8 @@ public class ViewGeneratedSVGDemo {
         SVGGraphics2D g = new SVGGraphics2D(doc);
 
         // Do some drawing.
-        Shape circle = new Ellipse2D.Double(0, 0, 50, 50);
         g.setPaint(Color.red);
+        Shape circle = new Ellipse2D.Double(0, 0, 50, 50);
         g.fill(circle);
         g.translate(60, 0);
         g.setPaint(Color.green);
