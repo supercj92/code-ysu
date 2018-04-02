@@ -1,7 +1,7 @@
-package com.cfysu.proxy.v2;
+package com.cfysu.proxy.jdk.v2;
 
-import com.cfysu.proxy.Dog;
-import com.cfysu.proxy.DogImpl;
+import com.cfysu.proxy.jdk.Dog;
+import com.cfysu.proxy.jdk.DogImpl;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

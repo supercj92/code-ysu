@@ -1,4 +1,4 @@
-package com.cfysu.proxy;
+package com.cfysu.proxy.jdk;
 
 public class DogImpl implements Dog{
 

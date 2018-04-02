@@ -1,4 +1,4 @@
-package com.cfysu.proxy;
+package com.cfysu.proxy.jdk;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

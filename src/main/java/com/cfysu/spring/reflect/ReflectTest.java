@@ -1,6 +1,6 @@
 package com.cfysu.spring.reflect;
 
-import com.cfysu.proxy.DogImpl;
+import com.cfysu.proxy.jdk.DogImpl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
