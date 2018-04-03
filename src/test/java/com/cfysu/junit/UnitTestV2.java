@@ -5,7 +5,10 @@ import com.cfysu.enums.MsgTypeEnum;
 import com.cfysu.model.Car;
 import com.cfysu.model.CoverAreaVo;
 import com.cfysu.model.PlaceDto;
+import com.cfysu.pattern.User;
 import com.google.common.collect.Lists;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
@@ -213,7 +216,7 @@ public class UnitTestV2 {
 
 	@Test
 	public void testSplit(){
-		String shopIdStr = "155";
+		String shopIdStr = "a,b,c,,";
 		String[] shopIdArray = shopIdStr.split(",");
 		for(String shopId : shopIdArray){
 			System.out.println("shopId:" + shopId);
@@ -331,6 +334,45 @@ public class UnitTestV2 {
 		System.out.println(contextClassLoader.getParent());
 		System.out.println(contextClassLoader.getParent().getParent());
 		//System.out.println(contextClassLoader.getParent().getParent().getParent().getParent());
+	}
+
+	@Test
+	public void testForeach(){
+		List<String> strList = new ArrayList<>(2);
+		strList.add("1");
+		strList.add("2");
+		// 抛出ConcurrentModificationException
+		// 如果是"1".equals(str)的话就不会抛异常
+		for(String str : strList){
+			if("2".equals(str)){
+				strList.remove(str);
+			}
+		}
+	}
+
+	@Test
+	public void testSplit2(){
+		String storeHeadImgUrl = "//bbcgw.m.jd.com/bbc.cStoreImgV2?applyId=900141&width=15&height=1.00&shopName=111&shopNo=NB999400";
+		String type = null;
+		if(storeHeadImgUrl.contains("type")){
+			String[] items = storeHeadImgUrl.split("&");
+			for(String item : items){
+				if(item.contains("type")){
+					String[] keyAndValue = item.split("=");
+					if(keyAndValue.length == 2){
+						type = keyAndValue[1];
+					}
+				}
+			}
+		}
+		System.out.println(type);
+	}
+
+	@Test
+	public void testXStream() throws FileNotFoundException {
+		XStream xStream = new XStream(new DomDriver());
+		User user = new User.UserBuilder().userName("cj").pwd("pwd").build();
+		xStream.toXML(user, new OutputStreamWriter(new FileOutputStream("D:\\user.xml")));
 	}
 }
 
