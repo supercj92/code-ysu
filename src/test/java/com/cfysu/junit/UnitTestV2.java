@@ -1,27 +1,43 @@
 package com.cfysu.junit;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.cfysu.enums.MsgTypeEnum;
 import com.cfysu.model.Car;
 import com.cfysu.model.CoverAreaVo;
 import com.cfysu.model.PlaceDto;
 import com.cfysu.pattern.User;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import com.sun.xml.internal.fastinfoset.util.StringArray;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.apache.taglibs.standard.lang.jstl.StringLiteral;
+import org.eclipse.jetty.util.StringMap;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.sound.midi.Soundbank;
 import java.io.*;
+import java.net.CacheRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class UnitTestV2 {
@@ -84,20 +100,20 @@ public class UnitTestV2 {
 	}
 
 	@Test
-    public void testEnums(){
-        System.out.println(MsgTypeEnum.MSG_TYPE_SUCCEED.getValue());
-    }
+public void testEnums(){
+System.out.println(MsgTypeEnum.MSG_TYPE_SUCCEED.getValue());
+}
 
-    @Test
+@Test
 	public void testAddress(){
-        try {
-            System.out.println(InetAddress.getLocalHost().getHostName());
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-    }
+try {
+System.out.println(InetAddress.getLocalHost().getHostName());
+} catch (UnknownHostException e) {
+e.printStackTrace();
+}
+}
 
-    @Test
+@Test
 	public void genTestData(){
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("", "");
@@ -216,7 +232,7 @@ public class UnitTestV2 {
 
 	@Test
 	public void testSplit(){
-		String shopIdStr = "a,b,c,,";
+		String shopIdStr = "a";
 		String[] shopIdArray = shopIdStr.split(",");
 		for(String shopId : shopIdArray){
 			System.out.println("shopId:" + shopId);
@@ -271,24 +287,24 @@ public class UnitTestV2 {
 	}
 
 	@Test
-    public void testRandom(){
+public void testRandom(){
 		//如果种子相同，会产生相同的伪随机数
-        System.out.println(new Random(50).nextInt(10));
+System.out.println(new Random(50).nextInt(10));
 		System.out.println(new Random(50).nextInt(10));
-    }
+}
 
-    @Test
+@Test
 	public void testRuntime() throws IOException {
-    	Runtime runtime = Runtime.getRuntime();
-    	//调用系统命令
-    	runtime.exec("calc.exe");
-    	runtime.exec("notepad.exe");
+	Runtime runtime = Runtime.getRuntime();
+	//调用系统命令
+	runtime.exec("calc.exe");
+	runtime.exec("notepad.exe");
 	}
 
 	@Test
 	public void testGeneric(){
-    	//ArrayList<String>()并不是List<Object>的子类
-    	//List<Object> objectList = new ArrayList<String>();
+	//ArrayList<String>()并不是List<Object>的子类
+	//List<Object> objectList = new ArrayList<String>();
 		List list = new ArrayList();
 		List arrayList = new ArrayList<String>();
 
@@ -374,6 +390,23 @@ public class UnitTestV2 {
 		User user = new User.UserBuilder().userName("cj").pwd("pwd").build();
 		xStream.toXML(user, new OutputStreamWriter(new FileOutputStream("D:\\user.xml")));
 	}
+
+	@Test
+	public void testMapObj(){
+		Map<String, Car> name2CarMap = Maps.newHashMap();
+		name2CarMap.put("ford", new Car(4, "ford"));
+		Car fordCar = name2CarMap.get("ford");
+		fordCar.setBrand("audi");
+
+		System.out.println(name2CarMap.get("ford").getBrand());
+	}
+
+	@Test
+	public void testMapGet(){
+		Map parmMap = Maps.newHashMap();
+		System.out.println(parmMap.get("key") == null);
+	}
+
 }
 
 
