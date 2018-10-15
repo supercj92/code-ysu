@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class DateUtil {
 
-    public final String FORMATE_FULL = "yyyy-MM-dd HH:mm:ss";
+    public static final String FORMATE_FULL = "yyyy-MM-dd HH:mm:ss";
 
     public static void main(String[] arg){
 //        Calendar calendarNow = Calendar.getInstance();
@@ -26,18 +26,24 @@ public class DateUtil {
         //System.out.println("trimed:" + toTrimStr.trim());
 //
 //        System.out.println("日期比较结果：" + calendarStart.after(calendarNow));
-        DateUtil dateUtil = new DateUtil();
-        dateUtil.testGetDeliveryInfo();
+//        DateUtil dateUtil = new DateUtil();
+//        dateUtil.testGetDeliveryInfo();
+        Date startDate = parseStr2Date("2017-9-25 09:00:00", FORMATE_FULL);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        System.out.println(startDate);
+        System.out.println(calendar.getTime());
     }
 
-    public void testGetDeliveryInfo(){
+    public static void testGetDeliveryInfo(){
         Date startDate = parseStr2Date("2017-9-25 09:00:00", FORMATE_FULL);
         Date endDate = parseStr2Date("2017-9-28 24:00:00", FORMATE_FULL);
         String deliverInfo = getDeliveryInfo(startDate, endDate);
         System.out.println("deliverInfo:" + deliverInfo);
     }
 
-    private String getDeliveryInfo(Date start, Date end){
+    private static String getDeliveryInfo(Date start, Date end){
 
         StringBuilder deliveryInfo = new StringBuilder();
         if(start == null || end == null){
@@ -68,7 +74,7 @@ public class DateUtil {
         return deliveryInfo.toString();
     }
 
-    public Date parseStr2Date(String date, String format) {
+    public static Date parseStr2Date(String date, String format) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format);
             return sdf.parse(date);
@@ -78,7 +84,7 @@ public class DateUtil {
         return null;
     }
 
-    private void setYMD(Calendar calendarFrom, Calendar calendarTo){
+    private static void setYMD(Calendar calendarFrom, Calendar calendarTo){
         calendarFrom.set(Calendar.YEAR, calendarTo.get(Calendar.YEAR));
         calendarFrom.set(Calendar.MONTH, calendarTo.get(Calendar.MONTH));
         calendarFrom.set(Calendar.DAY_OF_MONTH, calendarTo.get(Calendar.DAY_OF_MONTH));

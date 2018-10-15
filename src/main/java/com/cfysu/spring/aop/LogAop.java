@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class LogAop {
 
-    @Around(value = "execution(* com.cfysu.spring.reflect.OperateData.*(..)))")
+    @Around(value = "execution(* com.cfysu.spring.reflect.OperateDataMain.*(..)))")
     public void doLog(ProceedingJoinPoint point) throws Throwable {
         System.out.println("start log...");
         point.proceed();

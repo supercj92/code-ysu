@@ -14,7 +14,7 @@ public class Car {
 	
 	private Integer Price = 1;
 	
-	protected Car(int wheelNum, String brand){
+	public Car(int wheelNum, String brand){
 		this.wheelNum = wheelNum;
 		this.brand = brand;
 	}

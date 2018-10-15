@@ -15,6 +15,7 @@ public class CglibProxy implements MethodInterceptor {
         enhancer.setCallback(this);
         return enhancer.create();
     }
+    @Override
     public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         System.out.println("---cglib before----");
         Object res = methodProxy.invokeSuper(o, args);

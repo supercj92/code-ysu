@@ -14,7 +14,7 @@ import java.lang.reflect.Method;
 @Aspect
 public class AuthorizationAop {
 
-    @Pointcut("execution (* com.cfysu.spring.reflect.OperateData.*(..))")
+    @Pointcut("execution (* com.cfysu.spring.reflect.OperateDataMain.*(..))")
     public void pointCut(){}
 
     //@Around(value = "execution (* com.cfysu.spring.reflect.OperateData.*(..))")

@@ -87,4 +87,5 @@ public class JvmArgs {
 class User{
     private String name;
     private Long age;
+    public String[] strArray;
 }

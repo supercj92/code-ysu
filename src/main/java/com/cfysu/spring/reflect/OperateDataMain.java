@@ -6,11 +6,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OperateData {
+public class OperateDataMain {
 
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) {
         BeanFactory beanFactory = new ClassPathXmlApplicationContext("classpath:ApplicationContext.xml");
-        OperateData auth = (OperateData)beanFactory.getBean("operateData");
+        OperateDataMain auth = (OperateDataMain)beanFactory.getBean("operateDataMain");
         auth.updateData();
         auth.selectData();
         auth.deleteData();
