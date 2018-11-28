@@ -16,8 +16,11 @@ public class SocketServer {
 
     private static final Logger LOGGER = Logger.getLogger(SocketClient.class);
 
+    private static final Logger LOGGER2 = Logger.getLogger("ssss");
+
     public static void main(String[] args){
         try {
+            LOGGER.info("dd");
             new SocketServer().startServer();
         }catch (Exception e){
             e.printStackTrace();
@@ -37,7 +40,7 @@ public class SocketServer {
             //final PrintStream printStream = new PrintStream(socket.getOutputStream());
 
             //启动新线程处理客户端请求
-            pool.submit(new HttpWorker(reader, writer));
+            pool.submit(new Worker(reader, writer));
         }
     }
 

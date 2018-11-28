@@ -1,20 +1,20 @@
-package com.cfysu.jvm;
+package com.cfysu.jvm.classloader;
 
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.net.URLStreamHandlerFactory;
 
-public class Classloader extends URLClassLoader{
+public class CustomClassloader extends URLClassLoader{
 
-    public Classloader(URL[] urls, ClassLoader parent) {
+    public CustomClassloader(URL[] urls, ClassLoader parent) {
         super(urls, parent);
     }
 
-    public Classloader(URL[] urls) {
+    public CustomClassloader(URL[] urls) {
         super(urls);
     }
 
-    public Classloader(URL[] urls, ClassLoader parent, URLStreamHandlerFactory factory) {
+    public CustomClassloader(URL[] urls, ClassLoader parent, URLStreamHandlerFactory factory) {
         super(urls, parent, factory);
     }
 
@@ -25,8 +25,16 @@ public class Classloader extends URLClassLoader{
 
     public static void main(String[] args){
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        //app
+        System.out.println(contextClassLoader);
+        System.out.println(System.getProperty("java.class.path"));
+
+        //ext
         System.out.println(contextClassLoader.getParent());
+        System.out.println(System.getProperty("java.ext.dirs"));
+
+        //bootstrap
         System.out.println(contextClassLoader.getParent().getParent());
-        System.out.println(contextClassLoader.getParent().getParent().getParent());
+        System.out.println(System.getProperty("sun.boot.class.path"));
     }
 }

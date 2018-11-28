@@ -7,5 +7,11 @@ public class ContextMain {
         FileSystemXmlApplicationContext applicationContext = new FileSystemXmlApplicationContext("file:/Users/chris/IdeaProjects/mine/code-ysu/target/classes/ApplicationContext.xml");
         OperateDataMain operateDataMain = (OperateDataMain)applicationContext.getBean("operateDataMain");
         operateDataMain.insertData();
+        Object testUtil = applicationContext.getBean("testUtil");
+        if(testUtil == null){
+            System.out.println("testUtil is null");
+        }else {
+            System.out.println(testUtil.toString());
+        }
     }
 }

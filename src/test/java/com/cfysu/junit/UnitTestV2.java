@@ -26,6 +26,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import sun.reflect.generics.tree.VoidDescriptor;
 
 import javax.sound.midi.Soundbank;
 import java.io.*;
@@ -405,6 +406,31 @@ System.out.println(new Random(50).nextInt(10));
 	public void testMapGet(){
 		Map parmMap = Maps.newHashMap();
 		System.out.println(parmMap.get("key") == null);
+	}
+
+	@Test
+    public void testAppendNull(){
+        System.out.println("dd" + null);
+    }
+
+
+    @Test
+	public void testMap(){
+		Map<String, Object> map = new HashMap<>();
+		map.put("1", null);
+		map.put("2", null);
+		System.out.println(map.size());
+	}
+
+	@Test
+	public void testParseLong(){
+		Long.valueOf("580695008692580695008692");
+	}
+
+	@Test
+	public void testChar(){
+		System.out.println('1' == 49);
+		System.out.println(Integer.toBinaryString(49));
 	}
 
 }
