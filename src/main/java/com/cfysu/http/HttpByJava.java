@@ -22,7 +22,7 @@ public class HttpByJava {
     public void postByJavaNet(){
         BufferedReader bufferedReader = null;
         try {
-            URL receiveMsg = new URL("http://10.14.163.141:22000/com.jd.mmc.service.msg.ReceiveMsgService/mmc_test/method");
+            URL receiveMsg = new URL("http://taobao.com");
             HttpURLConnection connection = (HttpURLConnection)receiveMsg.openConnection();
             //设置http请求头信息
             connection.setRequestProperty("accept", "*/*");
@@ -68,7 +68,7 @@ public class HttpByJava {
     @Test
     public void getByApache(){
         HttpClient httpClient = new HttpClient();
-        GetMethod getMethod = new GetMethod("http://127.0.0.1/test");
+        GetMethod getMethod = new GetMethod("http://localhost:8080/test/httpHeader");
 
         NameValuePair[] nameValuePair = new NameValuePair[]{};
         getMethod.setQueryString(nameValuePair);

@@ -416,10 +416,10 @@ System.out.println(new Random(50).nextInt(10));
 
     @Test
 	public void testMap(){
-		Map<String, Object> map = new HashMap<>();
-		map.put("1", null);
-		map.put("2", null);
-		System.out.println(map.size());
+		Map<String, Object> map = new LinkedHashMap<>();
+		map.put("mirobot", "starbucks_retail");
+		map.put("retail", "starbucks_retail");
+		System.out.println(JSONObject.toJSONString(map));
 	}
 
 	@Test
@@ -432,6 +432,33 @@ System.out.println(new Random(50).nextInt(10));
 		System.out.println('1' == 49);
 		System.out.println(Integer.toBinaryString(49));
 	}
+
+	@Test
+	public void testObj(){
+		System.out.println(JSONObject.toJSONString(new TestObj("1", "2")));
+		System.out.println(JSON.toJSONString(new TestObj("1", "2")));
+	}
+
+	class TestObj{
+		private String param1;
+		private String param2;
+		public TestObj(String str1, String str2){
+			this.param1 = str1;
+			this.param2 = str2;
+		}
+		public String getParam1(){
+			return param1;
+		}
+	}
+
+	@Test
+    public void testPrint(){
+	    List<String> strList = Arrays.asList("str1", "str2", "str3");
+        System.out.println(strList);
+
+        strList.forEach(System.out::println);
+    }
+
 
 }
 

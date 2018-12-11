@@ -3,6 +3,7 @@ package com.cfysu.socket;
 import org.apache.log4j.Logger;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -19,8 +20,11 @@ public class SocketClient {
 
     public static void main(String[] args){
         try {
-            new SocketClient().startClient();
-        } catch (IOException e) {
+            //new SocketClient().startClient();
+            InetAddress inetAddress = InetAddress.getLocalHost();
+            System.out.println(inetAddress.getHostAddress());
+            System.out.println(inetAddress.toString());
+        } catch (Exception e) {
             LOGGER.error("IO异常", e);
         }
     }
