@@ -16,6 +16,7 @@ public class ApplicationContext {
         applicationContext.scan("com.cfysu.spring.context");
         applicationContext.refresh();
         ConfigService configService = applicationContext.getBean(ConfigService.class);
+        BeanA beanA = applicationContext.getBean(BeanA.class);
         System.out.println("==done==");
     }
 }

@@ -73,6 +73,11 @@ public class DiskClassloader extends ClassLoader {
         method.invoke(instance, null);
         //这个class是由app加载的，并不是由diskClassloader加载的
         System.out.println(testClass.getClassLoader().toString());
+        System.out.println(Test.class.getClassLoader().toString());
+        System.out.println(Integer.class.getClassLoader());
+        System.out.println(DiskClassloader.class.getClassLoader());
+        System.out.println(DiskClassloader.class.getClassLoader().getParent());
+        System.out.println(DiskClassloader.class.getClassLoader().getParent().getParent());
         if(instance instanceof Test){
             System.out.println("is test");
         }else {

@@ -5,7 +5,9 @@ import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /**
  * @Author eric
@@ -18,7 +20,9 @@ public class PrettyJSONUtil {
     }
 
     public static void main(String[] args) throws IOException {
-        byte[] bytes = Files.readAllBytes(Paths.get("/auth.json"));
-        System.out.println(PrettyJSONUtil.toPrettyJson(new String(bytes, 0, bytes.length, "utf-8")));
+        Path prettyJsonPath = Paths.get("/Users/chris/Documents/prettyJson/prettyJson.json");
+        byte[] bytes = Files.readAllBytes(prettyJsonPath);
+        String prettyJson = PrettyJSONUtil.toPrettyJson(new String(bytes, 0, bytes.length, "utf-8"));
+        Files.write(prettyJsonPath, prettyJson.getBytes("utf-8"), StandardOpenOption.WRITE);
     }
 }
