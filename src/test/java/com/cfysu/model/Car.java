@@ -1,5 +1,7 @@
 package com.cfysu.model;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +47,11 @@ public class Car {
 
 	public void setPrice(Integer price) {
 		Price = price;
+	}
+
+	@Override
+	public String toString() {
+		return JSONObject.toJSONString(this);
 	}
 }
 

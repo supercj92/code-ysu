@@ -1,44 +1,25 @@
 package com.cfysu.junit;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
 import com.cfysu.enums.MsgTypeEnum;
 import com.cfysu.model.Car;
 import com.cfysu.model.CoverAreaVo;
 import com.cfysu.model.PlaceDto;
-import com.cfysu.pattern.User;
+import com.cfysu.pattern.builder.User;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import com.sun.xml.internal.fastinfoset.util.StringArray;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.taglibs.standard.lang.jstl.StringLiteral;
-import org.eclipse.jetty.util.StringMap;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import sun.reflect.generics.tree.VoidDescriptor;
 
-import javax.sound.midi.Soundbank;
 import java.io.*;
-import java.net.CacheRequest;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class UnitTestV2 {

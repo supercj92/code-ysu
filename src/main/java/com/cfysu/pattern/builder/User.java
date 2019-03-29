@@ -1,4 +1,4 @@
-package com.cfysu.pattern;
+package com.cfysu.pattern.builder;
 
 //当属性个数大于4个，可考虑使用builder模式
 public class User{
