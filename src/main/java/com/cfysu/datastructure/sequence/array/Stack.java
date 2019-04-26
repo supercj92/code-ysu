@@ -1,7 +1,7 @@
 package com.cfysu.datastructure.sequence.array;
 
 /**
- * Created by longcangjian on 2017/6/8.
+ * Created by canglong on 2017/6/8.
  */
 public class Stack {
     private char[] stackArray;
