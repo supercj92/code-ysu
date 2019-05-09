@@ -10,19 +10,16 @@ public class LatchDemo {
         final CountDownLatch endGate = new CountDownLatch(threadNum);
 
         for(int i =0;i < threadNum;i++){
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        startGate.await();
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }finally {
-                        endGate.countDown();
-                    }
-                    System.out.println(Thread.currentThread().getName() + ":task done");
+            new Thread(() -> {
+                try {
+                    startGate.await();
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }finally {
+                    endGate.countDown();
                 }
+                System.out.println(Thread.currentThread().getName() + ":task done");
             }).start();
         }
 
