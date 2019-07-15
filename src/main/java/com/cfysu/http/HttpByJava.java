@@ -4,6 +4,11 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -80,6 +85,20 @@ public class HttpByJava {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testHttpComponent() throws Exception {
+        String response;
+        try(CloseableHttpClient httpClient = HttpClients.createDefault()){
+            HttpGet httpGet = new HttpGet("http://www.taobao.com");
+
+            try(CloseableHttpResponse httpResponse = httpClient.execute(httpGet)){
+                response = EntityUtils.toString(httpResponse.getEntity());
+            }
+
+            System.out.println(response);
         }
     }
 }

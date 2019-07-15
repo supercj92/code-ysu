@@ -13,4 +13,8 @@ public class ThreadLocalVariable {
     public static void setBrandId(Long brandId){
         brandIdThreadLocal.set(brandId);
     }
+
+    public static void clear(){
+        brandIdThreadLocal.remove();
+    }
 }
