@@ -20,7 +20,7 @@ public class AroundLogAspect {
         Object[] args = pjp.getArgs();
         Signature signature = pjp.getSignature();
         String methodName = signature.getName();
-        System.out.println(methodName + ":\n" + JSONObject.toJSON(args));
+        System.out.println(methodName + ":\n" + JSONObject.toJSONString(args));
         Object result = pjp.proceed();
         System.out.println(methodName + ":\n" + result);
         return result;
