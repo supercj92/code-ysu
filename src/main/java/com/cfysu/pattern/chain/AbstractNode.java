@@ -4,7 +4,7 @@ package com.cfysu.pattern.chain;
  * @Author canglong
  * @Date 2019/3/29
  */
-public class AbstractNode implements Node{
+public abstract class AbstractNode implements Node{
 
     protected Node next;
 
