@@ -17,6 +17,7 @@ public class Bullet implements Runnable{
 		this.directionEnum = directionEnum;
 	}
 
+	@Override
 	public void run() {
 		
 		while(isAlive()){

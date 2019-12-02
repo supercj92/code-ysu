@@ -26,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		heroTank = new HeroTank(200, 200);
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			try {
@@ -52,9 +53,11 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		//System.out.println(JSON.toJSONString(heroTank));
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_UP:
@@ -77,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener{
 		}
 	}
 
+	@Override
 	public void keyReleased(KeyEvent e) {
 		
 	}

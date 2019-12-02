@@ -17,6 +17,7 @@ public class EnemyTank extends BaseTank implements Runnable{
 		super.setDirection(DirectionEnum.DOWN);
 	}
 
+	@Override
 	public void run() {
 		while (true) {
 			try {

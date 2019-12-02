@@ -25,7 +25,8 @@ public class BaseTank implements Tank{
 		this.position_y = position_y;
 		this.color = color;
 	}
-	
+
+	@Override
 	public void move(DirectionEnum directionEnum){
 		switch (directionEnum) {
 		case UP:
@@ -48,7 +49,8 @@ public class BaseTank implements Tank{
 			break;
 		}
 	}
-	
+
+	@Override
 	public void fire(){
 		Bullet bullet = null;
 		switch (this.direction) {
