@@ -10,7 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 public class FactoryMain {
     public static void main(String[] args) {
         BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("ApplicationContext.xml"));
-        OperateDataMain operateDataMain = (OperateDataMain)beanFactory.getBean("operateDataMain");
+        OperateDataService operateDataMain = (OperateDataService)beanFactory.getBean("operateDataMain");
         operateDataMain.insertData();
     }
 
@@ -20,7 +20,7 @@ public class FactoryMain {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
         reader.loadBeanDefinitions(resource);
-        OperateDataMain operateDataMain = (OperateDataMain)beanFactory.getBean("operateDataMain");
+        OperateDataService operateDataMain = (OperateDataService)beanFactory.getBean("operateDataMain");
         operateDataMain.insertData();
     }
 }

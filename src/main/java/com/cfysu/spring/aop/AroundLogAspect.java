@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @Author canglong
  * @Date 2019/7/12
  */
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class AroundLogAspect {
 
     @Around(value = "@annotation(aroundLog)")

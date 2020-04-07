@@ -1,6 +1,6 @@
 package com.cfysu.spring.event.listener.register;
 
-import com.cfysu.spring.event.listener.exception.ListenerRegistorException;
+import com.cfysu.spring.event.listener.exception.ListenerRegisterException;
 import com.cfysu.spring.event.listener.listener.BotEventListener;
 import com.cfysu.spring.event.listener.listener.BotListener;
 import org.springframework.beans.BeansException;
@@ -29,7 +29,7 @@ public class BotListenerDetectorBeanPostProcessor implements BeanPostProcessor {
         BotEventListener annotation = AnnotationUtils.getAnnotation(bean.getClass(), BotEventListener.class);
         if(annotation != null){
             if(!BotListener.class.isAssignableFrom(bean.getClass())){
-                throw new ListenerRegistorException(beanName + " must implements BotListener");
+                throw new ListenerRegisterException(beanName + " must implements BotListener");
             }
             //register Listener
             botEventPublisher.addListener((BotListener)bean);

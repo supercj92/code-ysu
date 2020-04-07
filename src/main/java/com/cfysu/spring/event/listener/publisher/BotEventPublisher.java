@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.cfysu.spring.event.Node;
+import com.cfysu.spring.event.Node1;
 import com.cfysu.spring.event.listener.event.BotEvent;
 import com.cfysu.spring.event.listener.listener.BotListener;
+import com.cfysu.spring.event.listener.listener.DemoEventListener2;
 import com.cfysu.spring.event.listener.register.ListenerRegister;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.core.ResolvableType;
@@ -84,5 +87,11 @@ public class BotEventPublisher implements ListenerRegister{
             return null;
         }
         return resolvableType.getGeneric();
+    }
+
+    public static void main(String[] args) {
+        ResolvableType resolvableType = ResolvableType.forClass(Node1.class).as(Node.class);
+        System.out.println(resolvableType.getGeneric(0).resolve());
+        System.out.println(resolvableType.getGeneric(1).resolve());
     }
 }

@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
-@Component
-@Aspect
-public class AuthorizationAop {
+//@Component
+//@Aspect
+public class AuthorizationAspect {
 
-    @Pointcut("execution (* com.cfysu.spring.reflect.OperateDataMain.*(..))")
+    @Pointcut("execution (* com.cfysu.spring.reflect.OperateDataService.*(..))")
     public void pointCut(){}
 
     //@Around(value = "execution (* com.cfysu.spring.reflect.OperateData.*(..))")

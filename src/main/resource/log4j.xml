@@ -17,7 +17,7 @@
         <param name="encoding" value="UTF-8" />
         <param name="Append" value="true" />
         <param name="MaxFileSize" value="200MB"/>
-        <param name="File" value="/export/home/tomcat/logs/hctshopmin.jd.com/server1/app-info.log" />
+        <param name="File" value="/export/home/tomcat/logs/server1/app-info.log" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d %p - %C[%L] - %m \n" />
         </layout>
@@ -31,7 +31,7 @@
         <param name="encoding" value="UTF-8" />
         <param name="Append" value="true" />
         <param name="MaxFileSize" value="200MB"/>
-        <param name="File" value="/export/home/tomcat/logs/hctshopmin.jd.com/server1/app-error.log" />
+        <param name="File" value="/export/home/tomcat/logs/server1/app-error.log" />
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d %p - %C[%L] - %m \n" />
         </layout>
