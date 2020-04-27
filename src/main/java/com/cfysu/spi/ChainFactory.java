@@ -1,6 +1,7 @@
 package com.cfysu.spi;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ServiceLoader;
 
@@ -54,7 +55,7 @@ public class ChainFactory {
             nodeList.add(currentProvider);
         }
         //sort node
-        nodeList.sort((o1, o2) -> Integer.compare(o1.getOrder(), o2.getOrder()));
+        nodeList.sort(Comparator.comparingInt(Order::getOrder));
         return nodeList;
     }
 }
