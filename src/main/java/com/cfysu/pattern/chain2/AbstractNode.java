@@ -1,21 +1,21 @@
-package com.cfysu.pattern.chain;
+package com.cfysu.pattern.chain2;
 
 /**
  * @Author canglong
  * @Date 2019/3/29
  */
-public abstract class AbstractNode<I, O> implements Node<I, O>{
+public abstract class AbstractNode implements Node {
 
-    protected Node<I, O> next;
+    protected Node next;
     protected String nodeName = this.getClass().getSimpleName();
 
     protected AbstractNode(){}
-    protected AbstractNode(Node<I, O> node){
+    protected AbstractNode(Node node){
         this.next = node;
     }
 
     @Override
-    public Response<O> process(Request<I> request) {
+    public Response process(Request request) {
         if(support(request)){
             request.markProcessed(nodeName);
             return doProcess(request);
@@ -32,13 +32,13 @@ public abstract class AbstractNode<I, O> implements Node<I, O>{
      * @param request
      * @return
      */
-    public abstract boolean support(Request<I> request);
+    public abstract boolean support(Request request);
 
     /**
      * 实际处理请求
      * @param request
      * @return
      */
-    public abstract Response<O> doProcess(Request<I> request);
+    public abstract Response doProcess(Request request);
 
 }
