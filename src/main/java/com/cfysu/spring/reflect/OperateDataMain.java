@@ -12,8 +12,8 @@ public class OperateDataMain {
         BeanFactory beanFactory = new AnnotationConfigApplicationContext(ConfigBean.class);
         OperateDataService auth = (OperateDataService)beanFactory.getBean("operateDataService");
         auth.updateData();
-        auth.selectData();
-        auth.deleteData();
-        auth.insertData();
+        //auth.selectData();
+        //auth.deleteData();
+        //auth.insertData();
     }
 }

@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class OperateDataService {
 
-    @Autowired
-    private TestBeanPostProcessor testBeanPostProcessor;
+    //@Autowired
+    //private TestBeanPostProcessor testBeanPostProcessor;
 
     @Value("${key_1}")
     private String key;
 
     @Authorization("admin")
-    public void updateData(){
+    public Object updateData(){
         System.out.println("admin update data...");
+        return 1;
     }
 
     @Authorization("visitor")
