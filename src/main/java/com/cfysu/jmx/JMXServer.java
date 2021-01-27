@@ -37,5 +37,10 @@ public class JMXServer {
         JMXConnectorServer cs = JMXConnectorServerFactory.newJMXConnectorServer(jmxServiceURL, null, beanServer);
         //启动
         cs.start();
+
+        while (true){
+            Thread.sleep(1000);
+            System.out.println(user.getDes());
+        }
     }
 }

@@ -1,5 +1,10 @@
 package com.cfysu.datastructure.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+
 /**
  * @Author canglong
  * @Date 2019/4/19
@@ -9,6 +14,13 @@ public class BinaryTree {
     private TreeNode<Integer> root;
     private StringBuilder path = new StringBuilder();
 
+    /**
+     *           1
+     *       2       3
+     *     4   5   6   7
+     *   8                9
+     *                      10
+     */
     public BinaryTree(){
         TreeNode<Integer> node1 = new TreeNode<>(1);
         TreeNode<Integer> node2 = new TreeNode<>(2);
@@ -37,6 +49,48 @@ public class BinaryTree {
         node9.setLeftNode(node10);
 
         root = node1;
+    }
+
+    //深度优先遍历
+    public void dfs(TreeNode root){
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            appendPath(node);
+            if(node.getRightNode() != null){
+                stack.push(node.getRightNode());
+            }
+            if(node.getLeftNode() != null){
+                stack.push(node.getLeftNode());
+            }
+        }
+    }
+
+    //递归实现深度优先
+    public void dfsRecursion(TreeNode root){
+        if(root == null){
+            return;
+        }
+        appendPath(root);
+        dfsRecursion(root.getLeftNode());
+        dfsRecursion(root.getRightNode());
+    }
+
+    //广度优先遍历
+    public void bfs(TreeNode root){
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            appendPath(node);
+            if(node.getLeftNode() != null){
+                queue.offer(node.getLeftNode());
+            }
+            if(node.getRightNode() != null){
+                queue.offer(node.getRightNode());
+            }
+        }
     }
 
     public void preOrderTraversal(TreeNode node){
@@ -83,16 +137,29 @@ public class BinaryTree {
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
 
-        //前序遍历
-        binaryTree.preOrderTraversal(binaryTree.root);
+        ////前序遍历
+        //binaryTree.preOrderTraversal(binaryTree.root);
+        //binaryTree.printTraversalPath();
+        //
+        ////中序遍历
+        //binaryTree.midOrderTraversal(binaryTree.root);
+        //binaryTree.printTraversalPath();
+        //
+        ////后序遍历
+        //binaryTree.postOrderTraversal(binaryTree.root);
+        //binaryTree.printTraversalPath();
+
+        binaryTree.dfs(binaryTree.root);
         binaryTree.printTraversalPath();
 
-        //中序遍历
-        binaryTree.midOrderTraversal(binaryTree.root);
+        binaryTree.dfsRecursion(binaryTree.root);
         binaryTree.printTraversalPath();
 
-        //后序遍历
-        binaryTree.postOrderTraversal(binaryTree.root);
+        binaryTree.bfs(binaryTree.root);
         binaryTree.printTraversalPath();
+    }
+
+    private void appendPath(TreeNode treeNode){
+        path.append(treeNode.getData()).append(",");
     }
 }

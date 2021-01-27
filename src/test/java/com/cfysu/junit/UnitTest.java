@@ -8,11 +8,18 @@ import java.net.URLEncoder;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.cfysu.bean.Hero;
+import com.cfysu.util.Array;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.web.util.HtmlUtils;
 
 import com.alibaba.fastjson.JSON;
@@ -37,6 +44,16 @@ public class UnitTest {
         	}
         }
 		System.out.println("oldUrl:" + oldUrl + "/brnewUrl:" + newUrl);
+	}
+
+	@Test
+	public void testSchelduleService(){
+
+	}
+
+	public static void main(String[] args) {
+		ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(5);
+		scheduledExecutorService.scheduleWithFixedDelay(()-> System.out.println(new Date()), 0, 2, TimeUnit.SECONDS);
 	}
 	
 	@Test
@@ -230,12 +247,17 @@ public class UnitTest {
 
 	@Test
 	public void testDateFormat() throws ParseException {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
-		String dateStr = simpleDateFormat.format(new Date());
-		System.out.println("dateStr:" + dateStr);
 
-		String str = "2016/02/02 12:12:12";
-		Date date = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss").parse(str);
-		System.out.println(simpleDateFormat.format(date));
+		//Array annotation = AnnotationUtils.getAnnotation(Hero.class, Array.class);
+		//String[] value = annotation.value();
+		//System.out.println(value);
+		System.out.println(String.format("ddd:%s : %s", null, "null"));
+		//SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
+		//String dateStr = simpleDateFormat.format(new Date());
+		//System.out.println("dateStr:" + dateStr);
+        //
+		//String str = "2016/02/02 12:12:12";
+		//Date date = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss").parse(str);
+		//System.out.println(simpleDateFormat.format(date));
 	}
 }

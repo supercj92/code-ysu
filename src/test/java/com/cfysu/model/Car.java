@@ -10,6 +10,11 @@ public class Car {
 
 	public int wheelNum;
 
+	public static void main(String[] args) {
+		Car car = new Car(4, "audi");
+		System.out.println(car.toString());
+	}
+
 	private String brand ="BMW";
 	
 	private Map<String, String> propertyMap = new HashMap<String, String>();
@@ -52,6 +57,10 @@ public class Car {
 	@Override
 	public String toString() {
 		return JSONObject.toJSONString(this);
+	}
+
+	public String drive(String des){
+		return "drive to :" + des;
 	}
 }
 

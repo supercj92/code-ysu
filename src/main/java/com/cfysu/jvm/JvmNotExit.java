@@ -7,12 +7,9 @@ package com.cfysu.jvm;
  */
 public class JvmNotExit {
     public static void main(String[] args) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true){
+        new Thread(() -> {
+            while (true){
 
-                }
             }
         }).start();
         System.out.println("__done__");

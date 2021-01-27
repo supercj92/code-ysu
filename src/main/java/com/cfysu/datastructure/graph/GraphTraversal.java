@@ -27,7 +27,7 @@ public class GraphTraversal {
     }
 
     /**
-     * 深度优先
+     * 深度优先，递归方式实现
      */
     public void deepFirstSearch(GraphNode<Integer> node){
 
@@ -56,7 +56,7 @@ public class GraphTraversal {
         nodeQueue.add(node);
 
         while (!nodeQueue.isEmpty()){
-            GraphNode<Integer> nodeFromQueue = nodeQueue.remove();
+            GraphNode<Integer> nodeFromQueue = nodeQueue.poll();
 
             List<GraphNode<Integer>> neighbourNodeList = nodeFromQueue.getNeighbourNodeList();
             if(neighbourNodeList == null || neighbourNodeList.isEmpty()){
@@ -69,13 +69,13 @@ public class GraphTraversal {
 
                 path.append(nodeItem.getData()).append(",");
                 nodeItem.setVisited(true);
-                nodeQueue.add(nodeItem);
+                nodeQueue.offer(nodeItem);
             }
         }
 
         System.out.println(path.toString());
     }
-    
+
     public GraphNode<Integer> buildGraph(){
         GraphNode<Integer> node1 = new GraphNode<>(1);
         GraphNode<Integer> node2 = new GraphNode<>(2);
