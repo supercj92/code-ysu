@@ -20,4 +20,8 @@ public class DogImpl implements Dog{
     public void eat(String food){
         System.out.println("dog eat " + food);
     }
+
+    public static void main(String[] args) {
+        System.out.println(Dog.class.isInterface());
+    }
 }

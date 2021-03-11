@@ -2,6 +2,9 @@ package com.cfysu.thread.concurrent;
 
 import java.util.concurrent.Semaphore;
 
+/**
+ * 多个线程从一个共享的令牌池里获取令牌，当无令牌可用的时候，线程必须等待其他线程释放令牌
+ */
 public class SemaphoreDemo {
     public static void main(String[] args) throws InterruptedException {
         int threadNum = 4;

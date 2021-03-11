@@ -3,6 +3,9 @@ package com.cfysu.thread.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 
+/**
+ * 所有线程等待，一旦闭锁countDown，且count为0，则所有线程放行。
+ */
 public class LatchDemo {
     public static void main(String[] args) throws InterruptedException {
         int threadNum = 4;

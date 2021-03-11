@@ -11,27 +11,27 @@ import java.util.Stack;
  */
 public class BinaryTree {
 
-    private TreeNode<Integer> root;
+    private BinaryTreeNode<Integer> root;
     private StringBuilder path = new StringBuilder();
 
     /**
-     *           1
-     *       2       3
-     *     4   5   6   7
-     *   8                9
-     *                      10
+     *              1
+     *       2            3
+     *     4   5        6   7
+     *   8                    9
+     *                          10
      */
     public BinaryTree(){
-        TreeNode<Integer> node1 = new TreeNode<>(1);
-        TreeNode<Integer> node2 = new TreeNode<>(2);
-        TreeNode<Integer> node3 = new TreeNode<>(3);
-        TreeNode<Integer> node4 = new TreeNode<>(4);
-        TreeNode<Integer> node5 = new TreeNode<>(5);
-        TreeNode<Integer> node6 = new TreeNode<>(6);
-        TreeNode<Integer> node7 = new TreeNode<>(7);
-        TreeNode<Integer> node8 = new TreeNode<>(8);
-        TreeNode<Integer> node9 = new TreeNode<>(9);
-        TreeNode<Integer> node10 = new TreeNode<>(10);
+        BinaryTreeNode<Integer> node1 = new BinaryTreeNode<>(1);
+        BinaryTreeNode<Integer> node2 = new BinaryTreeNode<>(2);
+        BinaryTreeNode<Integer> node3 = new BinaryTreeNode<>(3);
+        BinaryTreeNode<Integer> node4 = new BinaryTreeNode<>(4);
+        BinaryTreeNode<Integer> node5 = new BinaryTreeNode<>(5);
+        BinaryTreeNode<Integer> node6 = new BinaryTreeNode<>(6);
+        BinaryTreeNode<Integer> node7 = new BinaryTreeNode<>(7);
+        BinaryTreeNode<Integer> node8 = new BinaryTreeNode<>(8);
+        BinaryTreeNode<Integer> node9 = new BinaryTreeNode<>(9);
+        BinaryTreeNode<Integer> node10 = new BinaryTreeNode<>(10);
 
         node1.setLeftNode(node2);
         node1.setRightNode(node3);
@@ -52,11 +52,11 @@ public class BinaryTree {
     }
 
     //深度优先遍历
-    public void dfs(TreeNode root){
-        Stack<TreeNode> stack = new Stack<>();
+    public void dfs(BinaryTreeNode root){
+        Stack<BinaryTreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()){
-            TreeNode node = stack.pop();
+            BinaryTreeNode node = stack.pop();
             appendPath(node);
             if(node.getRightNode() != null){
                 stack.push(node.getRightNode());
@@ -68,7 +68,7 @@ public class BinaryTree {
     }
 
     //递归实现深度优先
-    public void dfsRecursion(TreeNode root){
+    public void dfsRecursion(BinaryTreeNode root){
         if(root == null){
             return;
         }
@@ -78,11 +78,11 @@ public class BinaryTree {
     }
 
     //广度优先遍历
-    public void bfs(TreeNode root){
-        Queue<TreeNode> queue = new LinkedList<>();
+    public void bfs(BinaryTreeNode root){
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()){
-            TreeNode node = queue.poll();
+            BinaryTreeNode node = queue.poll();
             appendPath(node);
             if(node.getLeftNode() != null){
                 queue.offer(node.getLeftNode());
@@ -93,7 +93,7 @@ public class BinaryTree {
         }
     }
 
-    public void preOrderTraversal(TreeNode node){
+    public void preOrderTraversal(BinaryTreeNode node){
         if(node == null){
             return;
         }
@@ -105,7 +105,7 @@ public class BinaryTree {
 
     }
 
-    public void midOrderTraversal(TreeNode node){
+    public void midOrderTraversal(BinaryTreeNode node){
         if(node == null){
             return;
         }
@@ -117,7 +117,7 @@ public class BinaryTree {
         midOrderTraversal(node.getRightNode());
     }
 
-    public void postOrderTraversal(TreeNode node){
+    public void postOrderTraversal(BinaryTreeNode node){
         if(node == null){
             return;
         }
@@ -159,7 +159,7 @@ public class BinaryTree {
         binaryTree.printTraversalPath();
     }
 
-    private void appendPath(TreeNode treeNode){
-        path.append(treeNode.getData()).append(",");
+    private void appendPath(BinaryTreeNode binaryTreeNode){
+        path.append(binaryTreeNode.getData()).append(",");
     }
 }

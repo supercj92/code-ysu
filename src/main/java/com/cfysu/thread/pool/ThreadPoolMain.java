@@ -9,19 +9,16 @@ public class ThreadPoolMain {
         ThreadPoolMain instance = new ThreadPoolMain();
         ExecutorService pool = instance.getPool();
         for(int i = 0;i < 40;i++){
-            pool.execute(new Runnable() {
-                @Override
-                public void run() {
-                    //while (true){
-                    System.out.println(Thread.currentThread().getName() + ":doing work");
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    //}
-                    System.out.println(taskCount.getAndIncrement() + "==>>" + Thread.currentThread().getName() + ":结束工作");
+            pool.execute(() -> {
+                //while (true){
+                System.out.println(Thread.currentThread().getName() + ":doing work");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                //}
+                System.out.println(taskCount.getAndIncrement() + "==>>" + Thread.currentThread().getName() + ":结束工作");
             });
             //Thread.sleep(1000);
         }

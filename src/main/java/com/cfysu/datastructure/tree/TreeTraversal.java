@@ -1,4 +1,4 @@
-package com.cfysu.base;
+package com.cfysu.datastructure.tree;
 
 import java.util.ArrayList;
 import java.util.List;

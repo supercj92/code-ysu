@@ -6,9 +6,11 @@ import org.apache.log4j.Logger;
 /**
  * Created by cj on 17-6-17.
  */
-public class Link {
-    private Node first;
+public class Link<T> {
     private static final Logger logger = Logger.getLogger(Link.class);
+
+    private Node<T> first;
+
     public Link(){
         this.first = null;
     }
@@ -17,8 +19,8 @@ public class Link {
      * 从头部插入节点
      * @param data
      */
-    public void insertFirst(int data){
-        Node node = new Node(data);
+    public void insertFirst(T data){
+        Node<T> node = new Node<>(data);
         node.setNext(first);
         first = node;
     }
@@ -26,24 +28,31 @@ public class Link {
     /**
      * 删除头节点
      */
-    public int deleteFirst(){
+    public T deleteFirst(){
         if(isEmpty()){
             logger.info("链表为空");
-            return -1;
+            return null;
         }
-        Node temp = first;
+        Node<T> temp = first;
         first = temp.getNext();
-        return temp.getiData();
+        //置空被删除节点的引用
+        temp.setNext(null);
+        return temp.getData();
     }
 
     /**
      * 在链表尾部插入
      */
-    public void insertLast(int data){
-        Node currentNode = first;
+    public void insertLast(T data){
+        //当前头结点为空时，插入头结点
+        if(first == null){
+            insertFirst(data);
+            return;
+        }
+        Node<T> currentNode = first;
         while (currentNode != null){
             if(currentNode.getNext() == null){
-                Node newNode = new Node(data);
+                Node<T> newNode = new Node<>(data);
                 currentNode.setNext(newNode);
                 break;
             }
@@ -51,29 +60,36 @@ public class Link {
         }
     }
 
-    public void deleteLast(){
-        Node currentNode = first;
+    /**
+     * 链表尾号删除
+     */
+    public T deleteLast(){
+        Node<T> currentNode = first;
         while (currentNode != null){
-            //倒数第二个节点
-            if(currentNode.getNext().getNext() == null){
+
+            Node<T> nodeAfterCurrent = currentNode.getNext();
+            //如果nodeAfterCurrent没有后续节点，则nodeAfterCurrent为链表的尾部
+            if(nodeAfterCurrent.getNext() == null){
                 currentNode.setNext(null);
-                break;
+                return nodeAfterCurrent.getData();
             }
             //移动指针
             currentNode = currentNode.getNext();
         }
+        return null;
     }
 
     public boolean isEmpty(){
-        return first == null ? true : false;
+        return first == null;
     }
 
     public void displayList(){
-        Node currentNode = first;
+        StringBuilder stringBuilder = new StringBuilder();
+        Node<T> currentNode = first;
         while (currentNode != null){
-            currentNode.dispalyNode();
+            stringBuilder.append(currentNode.toString()).append(",");
             currentNode = currentNode.getNext();
         }
-        System.out.println();
+        System.out.println(stringBuilder.toString());
     }
 }

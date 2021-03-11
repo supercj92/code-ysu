@@ -1,5 +1,9 @@
 package com.cfysu.spring.context;
 
+import java.util.Map;
+
+import com.cfysu.spring.context.constructor.ComponentHandler;
+import com.cfysu.spring.context.constructor.Repository;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -17,6 +21,9 @@ public class ApplicationContext {
         applicationContext.refresh();
         ConfigService configService = applicationContext.getBean(ConfigService.class);
         BeanA beanA = applicationContext.getBean(BeanA.class);
+        ComponentHandler bean = applicationContext.getBean(ComponentHandler.class);
+        Map<String, Repository> beansOfType = applicationContext.getBeansOfType(Repository.class);
+        System.out.println(bean);
         System.out.println("==done==");
     }
 }

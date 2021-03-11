@@ -19,9 +19,7 @@ public class ScheduledPoolMain {
             return thread;
         });
 
-        ScheduledFuture<?> schedule = scheduledPoolMain.schedule(() -> {
-            System.out.println("scheduled task delay...");
-        }, 1000, TimeUnit.MILLISECONDS);
+        ScheduledFuture<?> schedule = scheduledPoolMain.schedule(() -> System.out.println("scheduled task delay..."), 1000, TimeUnit.MILLISECONDS);
 
         schedule.cancel(false);
         System.out.println("--done--");

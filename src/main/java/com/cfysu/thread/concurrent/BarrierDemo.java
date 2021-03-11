@@ -6,6 +6,7 @@ import java.util.concurrent.CyclicBarrier;
 /**
  * 栅栏类似与闭锁
  * 区别：栅栏可以reset，重复用，闭锁是一次性的
+ * 当所有的线程都到达一致状态（最后一个线程调用await），才会执行后续处理。
  */
 public class BarrierDemo {
     public static void main(String[] args) throws BrokenBarrierException, InterruptedException {

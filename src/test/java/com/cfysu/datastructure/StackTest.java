@@ -1,8 +1,8 @@
 package com.cfysu.datastructure;
 
+import com.cfysu.datastructure.stack.ArrayStack;
 import org.junit.Test;
 
-import com.cfysu.datastructure.sequence.array.Stack;
 //import com.alibaba.fastjson.JSONArray;
 
 import java.io.BufferedReader;
@@ -17,13 +17,13 @@ public class StackTest {
     public void reverseWord(){
        System.out.println("input please:");
        String content = readStringFromConsole();
-       Stack stack = new Stack(content.length());
+       ArrayStack arrayStack = new ArrayStack(content.length());
        for(int i = 0;i < content.length();i++){
-    	   stack.push(content.charAt(i));
+    	   arrayStack.push(content.charAt(i));
        }
        System.out.println("reversed:");
        for(int j = 0;j < content.length();j++){
-    	   System.out.print(stack.pop());
+    	   System.out.print(arrayStack.pop());
        }
     }
 

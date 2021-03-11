@@ -1,18 +1,17 @@
 package com.cfysu.datastructure.tree;
 
-import lombok.AllArgsConstructor;
+import java.util.List;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @Author canglong
- * @Date 2019/4/19
+ * @Date 2021/3/11
  */
 @Data
 public class TreeNode<T> {
     private T data;
-    private TreeNode leftNode;
-    private TreeNode rightNode;
+    private List<TreeNode<T>> subNodes;
 
     public TreeNode(T data){
         this.data = data;

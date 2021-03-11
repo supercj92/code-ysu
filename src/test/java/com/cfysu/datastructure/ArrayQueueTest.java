@@ -1,19 +1,19 @@
 package com.cfysu.datastructure;
 
-import com.cfysu.datastructure.sequence.array.Queue;
+import com.cfysu.datastructure.queue.ArrayQueue;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 /**
  * Created by cj on 17-6-18.
  */
-public class QueueTest {
+public class ArrayQueueTest {
 
-    private static final Logger LOGGER = Logger.getLogger(QueueTest.class);
+    private static final Logger LOGGER = Logger.getLogger(ArrayQueueTest.class);
 
     @Test
     public void testQueue(){
-        Queue queue = new Queue(4);
+        ArrayQueue queue = new ArrayQueue(4);
 
         queue.insert(1);
         queue.insert(2);

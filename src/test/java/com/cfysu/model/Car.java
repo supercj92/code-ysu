@@ -10,6 +10,10 @@ public class Car {
 
 	public int wheelNum;
 
+	public int getWheelNum() {
+		return wheelNum;
+	}
+
 	public static void main(String[] args) {
 		Car car = new Car(4, "audi");
 		System.out.println(car.toString());

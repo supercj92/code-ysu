@@ -1,20 +1,21 @@
-package com.cfysu.datastructure.sequence.array;
+package com.cfysu.datastructure.stack;
 
 /**
  * Created by canglong on 2017/6/8.
  */
-public class Stack {
-    private char[] stackArray;
+public class ArrayStack<T> implements Stack<T>{
+    private Object[] stackArray;
     private int pointer;
     private int maxSize;
 
-    public Stack(int maxSize){
-        this.stackArray = new char[maxSize];
+    public ArrayStack(int maxSize){
+        this.stackArray = new Object[maxSize];
         this.maxSize = maxSize;
         this.pointer = -1;
     }
 
-    public void push(char element){
+    @Override
+    public void push(T element){
         if(isFull()){
             System.out.println("栈已满");
            return;
@@ -23,10 +24,11 @@ public class Stack {
         stackArray[pointer] = element;
     }
 
-    public char pop(){
-        char element = '0';
+    @Override
+    public T pop(){
+        T element = null;
         if(!isEmpty()) {
-            element = stackArray[pointer];
+            element = (T)stackArray[pointer];
             pointer--;
         }
         return element;
