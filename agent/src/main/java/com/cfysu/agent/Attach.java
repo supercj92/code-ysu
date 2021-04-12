@@ -5,6 +5,7 @@ import java.lang.instrument.Instrumentation;
 /**
  * @Author canglong
  * @Date 2020/6/5
+ * 启动jvm时，可以通过指定参数来启动agent
  */
 public class Attach {
     public static void agentmain(String args, Instrumentation instrumentation){

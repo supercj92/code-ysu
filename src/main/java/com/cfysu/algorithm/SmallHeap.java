@@ -1,51 +1,38 @@
-/*package com.cfysu.junit;
+package com.cfysu.algorithm;
+
 
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Lists;
-import com.yhd.exam1.Combo.ResultItem;
 
-*//**
+import com.google.common.collect.Lists;
+import lombok.Data;
+
+/**
  * 小根堆
  * @author weichao
  *
- *//*
+ */
+@Data
 public class SmallHeap {
 
     private int maxSize;
     private List<ResultItem> itemList;
-    
-    public int getMaxSize() {
-        return maxSize;
-    }
-
-    public void setMaxSize(int maxSize) {
-        this.maxSize = maxSize;
-    }
-
-    public List<ResultItem> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<ResultItem> itemList) {
-        this.itemList = itemList;
-    }
 
     public SmallHeap(int maxSize) {
         this.maxSize = maxSize;
         itemList = Lists.newArrayList();
     }
-    
-    *//**
+
+    /**
      * 获取父节点的index
      * @param index
      * @return
-     *//*
+     */
     private int getParentIndex(int index) {
         return (index - 1) / 2;
     }
-    
+
     private int getBrotherIndex(int index) {
         if (index == 0) {
             return -1;
@@ -58,21 +45,21 @@ public class SmallHeap {
         }
         return index + 1;
     }
-    *//**
+    /**
      * 交换两个节点在list中的位置
      * @param index1
      * @param index2
-     *//*
+     */
     private void swapTwoNode(int index1, int index2) {
         ResultItem tmpItem = itemList.get(index1);
         itemList.set(index1, itemList.get(index2));
         itemList.set(index2, tmpItem);
     }
-    
-    *//**
+
+    /**
      * 添加元素
      * @param item
-     *//*
+     */
     public void addItem(ResultItem item) {
         if (itemList.size() == 0) {
             itemList.add(item);
@@ -91,11 +78,11 @@ public class SmallHeap {
             item = null;
         }
     }
-    
-    *//**
+
+    /**
      * 向下比较
      * @param index
-     *//*
+     */
     private void swap2Bottom(int index) {
         int leftChildIndex = 2 * index + 1;
         int rightChildIndex = leftChildIndex + 1;
@@ -114,11 +101,11 @@ public class SmallHeap {
             }
         }
     }
-    
-    *//**
+
+    /**
      * 向上比较并进行交换
      * @param index
-     *//*
+     */
     private void swap2Top(int index) {//向上比较
         if (index == 0) {
             return;
@@ -136,9 +123,9 @@ public class SmallHeap {
         swapTwoNode(swapIndex, parentIndex);
 //        swap2Bottom(parentIndex);
         swap2Top(parentIndex);
-        
+
     }
-    
+
     public static void main(String[] args) {
         SmallHeap heap = new SmallHeap(5);
         ResultItem item1 = new ResultItem("1", "2", 1, 1.9);
@@ -163,7 +150,4 @@ public class SmallHeap {
         heap.addItem(item10);
         System.out.println(JSON.toJSONString(heap.getItemList()));
     }
-    
-    
 }
-*/
