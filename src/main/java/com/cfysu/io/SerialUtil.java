@@ -11,6 +11,10 @@ import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 
+import com.alibaba.alime.dialog.api.Attributes;
+import com.alibaba.alime.dialog.api.output.OutputMessage;
+import com.alibaba.fastjson.JSON;
+
 import com.caucho.hessian.io.Hessian2Input;
 import com.caucho.hessian.io.Hessian2Output;
 import com.caucho.hessian.io.HessianInput;
@@ -23,23 +27,30 @@ import de.javakaffee.kryoserializers.ArraysAsListSerializer;
 import de.javakaffee.kryoserializers.GregorianCalendarSerializer;
 import de.javakaffee.kryoserializers.SynchronizedCollectionsSerializer;
 import de.javakaffee.kryoserializers.UnmodifiableCollectionsSerializer;
+import lombok.extern.slf4j.Slf4j;
 import org.objenesis.strategy.StdInstantiatorStrategy;
 
 /**
  * @Author canglong
  * @Date 2020/6/9
  */
+@Slf4j
 public class SerialUtil {
 
-    public static byte[] serializeByJdk(Object object) throws Exception{
-        byte[] data = null;
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        ObjectOutputStream output = new ObjectOutputStream(os);
-        output.writeObject(object);
-        output.flush();
-        output.close();
-        data = os.toByteArray();
-        return data;
+    public static byte[] serializeByJdk(Object object) {
+        try {
+            byte[] data = null;
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ObjectOutputStream output = new ObjectOutputStream(os);
+            output.writeObject(object);
+            output.flush();
+            output.close();
+            data = os.toByteArray();
+            return data;
+        }catch (Exception e){
+           e.printStackTrace();
+        }
+        return null;
     }
 
     public static <T> T deserializeByJdk(byte[] data) throws Exception{
@@ -111,13 +122,14 @@ public class SerialUtil {
         return baos.toByteArray();
     }
 
-    public static <T> T deserializeByKryo(byte[] in) throws Exception {
+    public static <T> T deserializeByKryo(byte[] in, Class c) throws Exception {
         Input input = null;
         ByteArrayInputStream bais = null;
         bais = new ByteArrayInputStream(in);
         input = new Input(bais);
         input.close();
-        return (T)createKryo().readObject(input, UserDO.class);
+        T t = (T)createKryo().readObject(input, OutputMessage.class);
+        return t;
     }
 
     public static void writeBytesToFile(byte[] bytes, File file) throws IOException {
@@ -148,50 +160,57 @@ public class SerialUtil {
 
     public static void main(String[] args) throws Exception {
 
-        UserDO user = new UserDO();
-        user.setName("jack");
-        user.setAge(10);
+        OutputMessage outputMessage = new OutputMessage();
+        Attributes attributes = new Attributes();
+        attributes.put("testKey", "testVal");
+        outputMessage.setAttributes(attributes);
+
+        //UserDO user = new UserDO();
+        //user.setName("jack");
+        //user.setAge(10);
         //user.setCarDO(new CarDO1("ford"));
 
         ////1.jdk
         //1.1 write
-        //byte[] bytes = serializeByJdk(user);
-        //writeBytesToFile(bytes, new File("./user.jdk"));
+        byte[] bytes = serializeByJdk(outputMessage);
+        writeBytesToFile(bytes, new File("./user.jdk"));
 
         //1.2 read
-        //byte[] bytesFromFile = readBytesFromFile(new File("./user.jdk"));
-        //UserDO userDO = deserializeByJdk(bytesFromFile);
-        //System.out.println(userDO);
+        byte[] bytesFromFile = readBytesFromFile(new File("./user.jdk"));
+        OutputMessage outputMessage1 = deserializeByJdk(bytesFromFile);
+        System.out.println(JSON.toJSONString(outputMessage1));
 
         //2.kryo
         ////2.1 write
-        //byte[] seBytes = serializeByKryo(user);
-        //writeBytesToFile(seBytes, new File("./user.kryo"));
-        //
-        ////2.2 read
-        //byte[] deBytes = readBytesFromFile(new File("./user.kryo"));
-        //UserDO userDO = deserializeByKryo(deBytes);
-        //System.out.println(userDO);
+        //byte[] seBytes = serializeByKryo(outputMessage);
+        //writeBytesToFile(seBytes, new File("./outputMessage1.kryo"));
+        ////
+        //////2.2 read
+        //byte[] deBytes = readBytesFromFile(new File("./outputMessage1.kryo"));
+        //OutputMessage outputMessage1 = deserializeByKryo(deBytes, OutputMessage.class);
+        //System.out.println(JSON.toJSONString(outputMessage1));
+
 
         //3.hessian
         //3.1 write
-        //byte[] bytes = serializeByHessian(user);
-        //writeBytesToFile(bytes, new File("./user.hessian"));
+        //byte[] bytes = serializeByHessian(outputMessage);
+        //writeBytesToFile(bytes, new File("./outputMessage.hessian"));
 
         //3.2 read
-        //byte[] bytesFromFile = readBytesFromFile(new File("./user.hessian"));
-        //UserDO userDO = deserializeByHessian(bytesFromFile);
-        //System.out.println(userDO);
+        //byte[] bytesFromFile = readBytesFromFile(new File("./outputMessage.hessian"));
+        //OutputMessage outputMessageFrom = deserializeByHessian(bytesFromFile);
+        //System.out.println(JSON.toJSONString(outputMessageFrom));
+
 
         //4.hessian2
         //4.1 write
-        //byte[] bytes = serializeByHessian2(user);
-        //writeBytesToFile(bytes, new File("./user.hessian2"));
-
-        //4.2 read
-        //byte[] bytesFromFile = readBytesFromFile(new File("./user.hessian2"));
-        //UserDO userDO = deserializeByHessian(bytesFromFile);
-        //System.out.println(userDO);
+        //byte[] bytes = serializeByHessian2(outputMessage);
+        //writeBytesToFile(bytes, new File("./outputMessage.hessian2"));
+        //
+        ////4.2 read
+        //byte[] bytesFromFile = readBytesFromFile(new File("./outputMessage.hessian2"));
+        //OutputMessage outputMessageFrom = deserializeByHessian(bytesFromFile);
+        //System.out.println(JSON.toJSONString(outputMessageFrom));
     }
 
     public static Kryo createKryo(){

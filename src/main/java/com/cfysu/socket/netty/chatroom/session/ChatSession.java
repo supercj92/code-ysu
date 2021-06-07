@@ -65,7 +65,7 @@ public class ChatSession {
      * @return
      */
     public boolean expire() {
-        //A negative time indicates that the session should never time out.
+        //A negative type indicates that the session should never type out.
         if (maxInactiveInterval < 0)
             return false;
 

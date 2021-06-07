@@ -1,0 +1,2 @@
+hello1=com.cfysu.spi.dubbo.HelloImpl
+hello2=com.cfysu.spi.dubbo.HelloImpl2

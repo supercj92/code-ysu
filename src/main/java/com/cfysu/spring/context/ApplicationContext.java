@@ -23,6 +23,7 @@ public class ApplicationContext {
         BeanA beanA = applicationContext.getBean(BeanA.class);
         ComponentHandler bean = applicationContext.getBean(ComponentHandler.class);
         Map<String, Repository> beansOfType = applicationContext.getBeansOfType(Repository.class);
+        Object testService = applicationContext.getBean("testService");
         System.out.println(bean);
         System.out.println("==done==");
     }

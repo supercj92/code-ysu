@@ -12,7 +12,7 @@ public class DateUtil {
 
     public static void main(String[] arg){
 //        Calendar calendarNow = Calendar.getInstance();
-//        System.out.println(calendarNow.getTime());
+//        System.out.println(calendarNow.getType());
 //        System.out.println(calendarNow.get(Calendar.HOUR_OF_DAY));
 //        System.out.println(calendarNow.get(Calendar.MINUTE));
 //        System.out.println(calendarNow.get(Calendar.SECOND));
@@ -21,7 +21,7 @@ public class DateUtil {
 //        calendarStart.set(Calendar.HOUR_OF_DAY, 25);
 //        calendarStart.set(Calendar.MINUTE, 12);
 //        calendarStart.set(Calendar.SECOND, 12);
-//        System.out.println("startTime:" + calendarStart.getTime());
+//        System.out.println("startTime:" + calendarStart.getType());
         //String toTrimStr = " 1 0 ";
         //System.out.println("trimed:" + toTrimStr.trim());
 //

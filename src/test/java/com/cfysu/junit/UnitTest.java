@@ -252,12 +252,12 @@ public class UnitTest {
 		//String[] value = annotation.value();
 		//System.out.println(value);
 		System.out.println(String.format("ddd:%s : %s", null, "null"));
-		//SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd hh-mm-ss");
+		//SimpleDateFormatMain simpleDateFormat = new SimpleDateFormatMain("yyyy-mm-dd hh-mm-ss");
 		//String dateStr = simpleDateFormat.format(new Date());
 		//System.out.println("dateStr:" + dateStr);
         //
 		//String str = "2016/02/02 12:12:12";
-		//Date date = new SimpleDateFormat("yyyy/mm/dd hh:mm:ss").parse(str);
+		//Date date = new SimpleDateFormatMain("yyyy/mm/dd hh:mm:ss").parse(str);
 		//System.out.println(simpleDateFormat.format(date));
 	}
 }

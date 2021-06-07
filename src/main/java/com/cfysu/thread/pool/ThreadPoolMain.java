@@ -32,12 +32,11 @@ public class ThreadPoolMain {
         return new ThreadPoolExecutor(2, 5, 2000, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(), new NamedThreadFactory("ThreadPool"));
     }
 
-    class NamedThreadFactory implements ThreadFactory{
+    public class NamedThreadFactory implements ThreadFactory{
 
         private final String prefix;
 
         private final AtomicInteger thradCount = new AtomicInteger(1);
-
 
         NamedThreadFactory(String prefix){
             this.prefix = prefix;
