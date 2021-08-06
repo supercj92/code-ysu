@@ -440,6 +440,26 @@ System.out.println(new Random(50).nextInt(10));
         strList.forEach(System.out::println);
     }
 
+    @Test
+	public void testOptional(){
+		Optional<Object> empty = Optional.empty();
+		System.out.println(empty.isPresent());
+	}
+
+	@Test
+    public void testValue(){
+	    Car car = new Car();
+	    car.setBrand("ford");
+	    car.setCar(new Car(3, "shifeng"));
+	    //change(car);
+		System.out.println(car.toString());
+
+    }
+
+    private void change(Car car){
+	    car = new Car();
+    }
+
 
 }
 

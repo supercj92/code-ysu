@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 
@@ -27,8 +28,12 @@ import de.javakaffee.kryoserializers.ArraysAsListSerializer;
 import de.javakaffee.kryoserializers.GregorianCalendarSerializer;
 import de.javakaffee.kryoserializers.SynchronizedCollectionsSerializer;
 import de.javakaffee.kryoserializers.UnmodifiableCollectionsSerializer;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.objenesis.strategy.StdInstantiatorStrategy;
+
+import static com.cfysu.io.FileUtil.readBytesFromFile;
+import static com.cfysu.io.FileUtil.writeBytesToFile;
 
 /**
  * @Author canglong
@@ -132,53 +137,33 @@ public class SerialUtil {
         return t;
     }
 
-    public static void writeBytesToFile(byte[] bytes, File file) throws IOException {
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        byte[] buffer = new byte[1024];
-
-        while (byteArrayInputStream.read(buffer) != -1){
-            fileOutputStream.write(buffer);
-        }
-        byteArrayInputStream.close();
-        fileOutputStream.close();
-    }
-
-    public static byte[] readBytesFromFile(File file) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(file);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byte[] buffer = new byte[1024];
-
-        while (fileInputStream.read(buffer) != -1){
-            byteArrayOutputStream.write(buffer);
-        }
-        fileInputStream.close();
-        byteArrayOutputStream.close();
-
-        return byteArrayOutputStream.toByteArray();
-    }
-
     public static void main(String[] args) throws Exception {
 
-        OutputMessage outputMessage = new OutputMessage();
-        Attributes attributes = new Attributes();
-        attributes.put("testKey", "testVal");
-        outputMessage.setAttributes(attributes);
+        //OutputMessage outputMessage = new OutputMessage();
+        //Attributes attributes = new Attributes();
+        //attributes.put("testKey", "testVal");
+        //outputMessage.setAttributes(attributes);
 
         //UserDO user = new UserDO();
         //user.setName("jack");
         //user.setAge(10);
         //user.setCarDO(new CarDO1("ford"));
+        Person person = new Person();
+        Cat helloKitty = new HelloKitty();
+        person.setCat(helloKitty);
 
         ////1.jdk
         //1.1 write
-        byte[] bytes = serializeByJdk(outputMessage);
-        writeBytesToFile(bytes, new File("./user.jdk"));
+        byte[] bytes = serializeByJdk(person);
+        writeBytesToFile(bytes, new File("./person.jdk"));
+        System.out.println("serialize to file success");
 
         //1.2 read
-        byte[] bytesFromFile = readBytesFromFile(new File("./user.jdk"));
-        OutputMessage outputMessage1 = deserializeByJdk(bytesFromFile);
-        System.out.println(JSON.toJSONString(outputMessage1));
+        byte[] bytesFromFile = readBytesFromFile(new File("./person.jdk"));
+        Person personFromDisk = deserializeByJdk(bytesFromFile);
+        System.out.println(JSON.toJSONString(personFromDisk));
+        System.out.println(((HelloKitty)personFromDisk.getCat()).name);
+        System.out.println("serialize from file success");
 
         //2.kryo
         ////2.1 write
@@ -211,6 +196,17 @@ public class SerialUtil {
         //byte[] bytesFromFile = readBytesFromFile(new File("./outputMessage.hessian2"));
         //OutputMessage outputMessageFrom = deserializeByHessian(bytesFromFile);
         //System.out.println(JSON.toJSONString(outputMessageFrom));
+    }
+
+    @Data
+    static class Person implements Serializable {
+        private Cat cat;
+    }
+
+    interface Cat extends Serializable{}
+
+    static class HelloKitty implements Cat{
+        public String name = "helloKitty";
     }
 
     public static Kryo createKryo(){

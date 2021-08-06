@@ -1,4 +1,4 @@
-package com.cfysu.socket.protocol;
+package com.cfysu.socket.netty;
 
 import java.nio.charset.Charset;
 
@@ -18,10 +18,10 @@ public class SimpleTcpChannelHandler extends ChannelInboundHandlerAdapter {
 
         System.out.println(byteBuf.toString(Charset.forName("utf-8")));
 
-        ByteBuf buffer = ctx.alloc().buffer();
-        buffer.writeBytes("xx".getBytes());
-
-        ctx.channel().writeAndFlush(buffer);
+        //ByteBuf buffer = ctx.alloc().buffer();
+        //buffer.writeBytes("xx".getBytes());
+        //
+        //ctx.channel().writeAndFlush(buffer);
         ctx.channel().close();
     }
 }

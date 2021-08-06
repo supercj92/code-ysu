@@ -5,8 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Data;
 
+@Data
 public class Car {
+
+	private Car car;
 
 	public int wheelNum;
 

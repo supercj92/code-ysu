@@ -1,14 +1,14 @@
-package com.cfysu.socket.protocol.codec;
+package com.cfysu.socket.netty.protocol.codec;
 
 import java.util.List;
 
 import com.cfysu.io.SerialUtil;
-import com.cfysu.socket.protocol.Protocol;
+import com.cfysu.socket.netty.protocol.Protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
 
-import static com.cfysu.socket.protocol.Protocol.TYPE_IN;
+import static com.cfysu.socket.netty.protocol.Protocol.TYPE_IN;
 
 /**
  * @Author canglong
@@ -18,7 +18,7 @@ import static com.cfysu.socket.protocol.Protocol.TYPE_IN;
 public class ProtocolDecoder extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if(in.readableBytes() > 117){
+        if(in.readableBytes() >= 117){
             System.out.println("decode---");
             ByteBuf byteBuf = in.readBytes(117);
             Protocol protocol = SerialUtil.deserializeByJdk(byteBuf.array());
