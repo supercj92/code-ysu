@@ -12,26 +12,32 @@ import java.io.IOException;
  * @Date 2021/8/6
  */
 public class FileUtil {
-    public static void writeBytesToFile(byte[] bytes, File file) throws IOException {
+    public static void writeBytesToFile(byte[] bytes, String path) throws IOException {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        byte[] buffer = new byte[1024];
+        FileOutputStream fileOutputStream = new FileOutputStream(new File(path));
+        byte[] buffer = new byte[8 * 1024];
+        int read;
 
-        while (byteArrayInputStream.read(buffer) != -1){
-            fileOutputStream.write(buffer);
+        while ((read = byteArrayInputStream.read(buffer)) != -1){
+            //直接写buffer存在bug，如果buffer不满，则会写入上一次循环遗留的数据
+            //fileOutputStream.write(buffer);
+            fileOutputStream.write(buffer, 0, read);
         }
         byteArrayInputStream.close();
+
+        fileOutputStream.flush();
         fileOutputStream.close();
         System.out.println("writeBytesToFile success");
     }
 
-    public static byte[] readBytesFromFile(File file) throws IOException {
-        FileInputStream fileInputStream = new FileInputStream(file);
+    public static byte[] readBytesFromFile(String path) throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(new File(path));
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[8 * 1024];
 
-        while (fileInputStream.read(buffer) != -1){
-            byteArrayOutputStream.write(buffer);
+        int read;
+        while ((read = fileInputStream.read(buffer)) != -1){
+            byteArrayOutputStream.write(buffer, 0, read);
         }
         fileInputStream.close();
         byteArrayOutputStream.close();

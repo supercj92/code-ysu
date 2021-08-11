@@ -19,6 +19,17 @@
     <dependencies>
 
         <dependency>
+            <groupId>com.alibaba.alime.dialog</groupId>
+            <artifactId>alime-tool-test</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.68.noneautotype</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <exclusions>

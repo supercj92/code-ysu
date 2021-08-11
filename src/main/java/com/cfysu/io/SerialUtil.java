@@ -155,11 +155,11 @@ public class SerialUtil {
         ////1.jdk
         //1.1 write
         byte[] bytes = serializeByJdk(person);
-        writeBytesToFile(bytes, new File("./person.jdk"));
+        writeBytesToFile(bytes, "./person.jdk");
         System.out.println("serialize to file success");
 
         //1.2 read
-        byte[] bytesFromFile = readBytesFromFile(new File("./person.jdk"));
+        byte[] bytesFromFile = readBytesFromFile("./person.jdk");
         Person personFromDisk = deserializeByJdk(bytesFromFile);
         System.out.println(JSON.toJSONString(personFromDisk));
         System.out.println(((HelloKitty)personFromDisk.getCat()).name);
