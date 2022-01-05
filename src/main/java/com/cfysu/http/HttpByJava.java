@@ -1,22 +1,13 @@
 package com.cfysu.http;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-import org.junit.Test;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import org.junit.Test;
 
 /**
  * Created by cj on 2017/9/5.
@@ -67,38 +58,6 @@ public class HttpByJava {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    @Test
-    public void getByApache(){
-        HttpClient httpClient = new HttpClient();
-        GetMethod getMethod = new GetMethod("http://localhost:8080/test/httpHeader");
-
-        NameValuePair[] nameValuePair = new NameValuePair[]{};
-        getMethod.setQueryString(nameValuePair);
-
-        try {
-            httpClient.executeMethod(getMethod);
-            if(getMethod.getStatusCode() == HttpStatus.SC_OK){
-                System.out.println("response:" + getMethod.getResponseBodyAsString());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void testHttpComponent() throws Exception {
-        String response;
-        try(CloseableHttpClient httpClient = HttpClients.createDefault()){
-            HttpGet httpGet = new HttpGet("http://www.taobao.com");
-
-            try(CloseableHttpResponse httpResponse = httpClient.execute(httpGet)){
-                response = EntityUtils.toString(httpResponse.getEntity());
-            }
-
-            System.out.println(response);
         }
     }
 }

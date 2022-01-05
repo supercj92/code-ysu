@@ -8,20 +8,35 @@ public class ThreadPoolMain {
         AtomicInteger taskCount = new AtomicInteger(1);
         ThreadPoolMain instance = new ThreadPoolMain();
         ExecutorService pool = instance.getPool();
-        for(int i = 0;i < 40;i++){
-            pool.execute(() -> {
-                //while (true){
-                System.out.println(Thread.currentThread().getName() + ":doing work");
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                //}
-                System.out.println(taskCount.getAndIncrement() + "==>>" + Thread.currentThread().getName() + ":结束工作");
-            });
-            //Thread.sleep(1000);
-        }
+        //for(int i = 0;i < 40;i++){
+        //    pool.execute(() -> {
+        //        //while (true){
+        //        System.out.println(Thread.currentThread().getName() + ":doing work");
+        //        try {
+        //            Thread.sleep(500);
+        //        } catch (InterruptedException e) {
+        //            e.printStackTrace();
+        //        }
+        //        //}
+        //        System.out.println(taskCount.getAndIncrement() + "==>>" + Thread.currentThread().getName() + ":结束工作");
+        //    });
+        //    //Thread.sleep(1000);
+        //}
+        CountDownLatch countDownLatch = new CountDownLatch(1);
+        Future<?> future = pool.submit(() -> {
+            System.out.println("start log");
+            while (true){
+
+            }
+            //try {
+            //    countDownLatch.wait();
+            //} catch (InterruptedException e) {
+            //    System.out.println("");
+            //    e.printStackTrace();
+            //}
+        });
+        Thread.sleep(1000);
+        future.cancel(true);
         System.out.println("shutdown start");
         pool.shutdown();
         pool.awaitTermination(Integer.MAX_VALUE, TimeUnit.SECONDS);

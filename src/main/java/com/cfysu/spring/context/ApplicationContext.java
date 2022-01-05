@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.cfysu.spring.context.constructor.ComponentHandler;
 import com.cfysu.spring.context.constructor.Repository;
+import com.cfysu.spring.context.qualifier.TestService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -23,8 +24,8 @@ public class ApplicationContext {
         BeanA beanA = applicationContext.getBean(BeanA.class);
         ComponentHandler bean = applicationContext.getBean(ComponentHandler.class);
         Map<String, Repository> beansOfType = applicationContext.getBeansOfType(Repository.class);
-        Object testService = applicationContext.getBean("testService");
-        System.out.println(bean);
+        TestService testService = (TestService)applicationContext.getBean("testService");
+        System.out.println(testService.testList.get(0).getClass().getName());
         System.out.println("==done==");
     }
 }

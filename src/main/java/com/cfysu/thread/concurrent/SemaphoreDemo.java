@@ -8,21 +8,25 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreDemo {
     public static void main(String[] args) throws InterruptedException {
         int threadNum = 4;
-        final Semaphore semaphore = new Semaphore(threadNum);
+        final Semaphore semaphore = new Semaphore(threadNum - 1);
         for(int i = 0;i < threadNum;i++){
-            new Thread(() -> {
-                try {
-                    semaphore.acquire();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }finally {
-                    //如果不释放信号量，会有一个线程阻塞，jvm无法退出
-                    semaphore.release();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        semaphore.acquire();
+                        System.out.println(String.format("%s got token", Thread.currentThread().getName()));
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } finally {
+                        //如果不释放信号量，会有一个线程阻塞，jvm无法退出
+                        semaphore.release();
+                    }
+                    System.out.println(Thread.currentThread().getName() + ":finished");
                 }
-                System.out.println(Thread.currentThread().getName() + ":after acquire()");
             }).start();
         }
-        semaphore.acquire();
-        System.out.println(Thread.currentThread().getName() + ":after acquire()");
+        System.out.println(Thread.currentThread().getName() + ":finished");
     }
 }

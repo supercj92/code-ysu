@@ -22,6 +22,7 @@ public class Main {
             urlList.add(url);
         }
         urlList.parallelStream().forEach((url) -> System.out.println(url));
+        System.out.println("-------root end------");
 
         //ext
         String property = System.getProperty("java.ext.dirs");
@@ -29,10 +30,12 @@ public class Main {
         for(String string : urlArray){
             System.out.println(string);
         }
+        System.out.println("---------ext end---------");
 
         //app
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
         System.out.println(JSONObject.toJSONString(contextClassLoader));
+        System.out.println("-----------app end------------");
     }
 
     @Test
