@@ -15,6 +15,7 @@
 
     <modules>
         <module>agent</module>
+        <module>lab</module>
     </modules>
     <dependencies>
 

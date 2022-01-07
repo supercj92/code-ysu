@@ -21,6 +21,9 @@ public class Attach {
         System.out.println("premain, agentArgs : " + agentArgs);
     }
 
+    /**
+     * 使用java -jar xxx.jar可以直接运行main方法
+     */
     public static void main(String[] args) {
         String string = Arrays.stream(args).collect(Collectors.joining(","));
         System.out.println(String.format("main method exec, args :%s", string));
