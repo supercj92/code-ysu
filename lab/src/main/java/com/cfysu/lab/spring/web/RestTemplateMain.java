@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
  * @Author canglong
  * @Date 2022/1/13
  */
-public class TemplateMain {
+public class RestTemplateMain {
     public static void main(String[] args) {
         RestTemplate template = new RestTemplate();
         Map<String, String> vars = new HashMap<>();

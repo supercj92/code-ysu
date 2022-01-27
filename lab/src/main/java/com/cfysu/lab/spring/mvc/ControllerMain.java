@@ -20,6 +20,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 /**
  * @Author canglong
@@ -45,6 +46,7 @@ public class ControllerMain {
     public ResponseEntity<String> foo(HttpServletRequest request, HttpServletResponse httpServletResponse)
         throws IOException, ServletException {
         ServletInputStream inputStream = request.getInputStream();
+        MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
         //Collection<Part> parts = request.getParts();
         //String string = IOUtils.toString(inputStream);
         //File file = new File("./http.log");

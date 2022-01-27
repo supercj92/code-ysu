@@ -16,6 +16,7 @@
     <modules>
         <module>agent</module>
         <module>lab</module>
+        <module>cli</module>
     </modules>
     <dependencies>
 
