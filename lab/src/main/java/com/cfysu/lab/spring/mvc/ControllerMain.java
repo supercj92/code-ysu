@@ -30,6 +30,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @SpringBootApplication(scanBasePackages = {"com.cfysu.lab.spring.mvc"})
 public class ControllerMain {
 
+    //-Des.path.home=/Users/chris/eshome -Des.path.conf=/Users/chris/eshome/config -Xms1g -Xmx1g -Dlog4j2.disable.jmx=true -Djava.security.policy=/Users/chris/eshome/config/elasticsearch.policy
     public static void main(String[] args) {
         SpringApplication.run(ControllerMain.class, args);
     }

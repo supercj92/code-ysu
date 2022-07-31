@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @Author canglong
  * @Date 2019/7/12
  */
-//@Component
-//@Aspect
+@Component
+@Aspect
 public class AroundLogAspect {
 
     @Around(value = "@annotation(aroundLog)")
@@ -21,6 +21,8 @@ public class AroundLogAspect {
         Signature signature = pjp.getSignature();
         String methodName = signature.getName();
         System.out.println(methodName + ":\n" + JSONObject.toJSONString(args));
+        String clazzName = pjp.getTarget().getClass().getName();
+        System.out.println(clazzName);
         Object result = pjp.proceed();
         System.out.println(methodName + ":\n" + result);
         return result;

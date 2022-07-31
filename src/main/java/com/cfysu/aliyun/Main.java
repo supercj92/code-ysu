@@ -2,8 +2,13 @@ package com.cfysu.aliyun;
 
 
 import com.aliyun.retailbot20210224.Client;
+import com.aliyun.retailbot20210224.models.AddSolutionRequest;
+import com.aliyun.retailbot20210224.models.AddSolutionResponse;
+import com.aliyun.retailbot20210224.models.ListSubscribedPackageKnowledgesRequest;
+import com.aliyun.retailbot20210224.models.ListSubscribedPackageKnowledgesResponse;
 import com.aliyun.retailbot20210224.models.ListSubscriptionByPackageRequest;
 import com.aliyun.retailbot20210224.models.ListSubscriptionByPackageResponse;
+import com.aliyun.retailbot20210224.models.RecognizeMessageForTestRequest;
 import com.aliyun.teaopenapi.models.Config;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -45,6 +50,12 @@ public class Main {
         ListSubscriptionByPackageRequest request = new ListSubscriptionByPackageRequest();
         ListSubscriptionByPackageResponse listSubscriptionByPackageResponse = retailClient.listSubscriptionByPackage(
             request);
+        ListSubscribedPackageKnowledgesResponse listSubscribedPackageKnowledgesResponse
+            = retailClient.listSubscribedPackageKnowledges(new ListSubscribedPackageKnowledgesRequest());
+
+        AddSolutionResponse addSolutionResponse = retailClient.addSolution(new AddSolutionRequest());
+
+        retailClient.recognizeMessageForTest(new RecognizeMessageForTestRequest());
     }
 
 }
