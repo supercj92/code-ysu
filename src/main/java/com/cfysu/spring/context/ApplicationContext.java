@@ -20,6 +20,8 @@ public class ApplicationContext {
         //applicationContext.register(ConfigBean.class);
         applicationContext.scan("com.cfysu.spring.context");
         applicationContext.refresh();
+        BaseBean bean1 = applicationContext.getBean(BaseBean.class);
+        BeanB bean2 = applicationContext.getBean(BeanB.class);
         ConfigService configService = applicationContext.getBean(ConfigService.class);
         BeanA beanA = applicationContext.getBean(BeanA.class);
         ComponentHandler bean = applicationContext.getBean(ComponentHandler.class);

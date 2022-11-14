@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * @Date 2019/1/2
  */
 @Component
-public class BeanA {
+public class BeanA extends BaseBean{
     @Autowired
     private BeanB beanB;
 }

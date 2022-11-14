@@ -11,5 +11,5 @@ import org.springframework.stereotype.Component;
 public class BeanB {
 
     @Autowired
-    private BeanA beanA;
+    private BaseBean beanA;
 }
