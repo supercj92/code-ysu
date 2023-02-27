@@ -12,11 +12,13 @@ public class ProgramTxTests {
 
     private PlatformTransactionManager platformTransactionManager;
 
+    private TransactionTemplate transactionTemplate = new TransactionTemplate(platformTransactionManager);
+
     @Test
     public void programTX() {
         String param2 = null;
         //方式一，通过手动设置回滚状态，通知事务管理器执行回滚操作
-        new TransactionTemplate(platformTransactionManager).execute((status -> {
+        transactionTemplate.execute((status -> {
             try {
                 return doSth(param2);
             } catch (Exception e) {
@@ -26,7 +28,7 @@ public class ProgramTxTests {
         }));
 
         //方式二，通过抛出异常的方式，通知事务管理器执行回滚操作
-        new TransactionTemplate(platformTransactionManager).execute((status -> doSth(param2)));
+        transactionTemplate.execute((status -> doSth(param2)));
     }
 
     private String doSth(String param1) {
