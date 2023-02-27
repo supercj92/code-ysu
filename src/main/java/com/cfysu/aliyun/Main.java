@@ -9,6 +9,8 @@ import com.aliyun.retailbot20210224.models.ListSubscribedPackageKnowledgesRespon
 import com.aliyun.retailbot20210224.models.ListSubscriptionByPackageRequest;
 import com.aliyun.retailbot20210224.models.ListSubscriptionByPackageResponse;
 import com.aliyun.retailbot20210224.models.RecognizeMessageForTestRequest;
+import com.aliyun.retailbot20210224.models.RecognizeMessageRequest;
+import com.aliyun.retailbot20210224.models.RecognizeMessageResponse;
 import com.aliyun.teaopenapi.models.Config;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -56,6 +58,9 @@ public class Main {
         AddSolutionResponse addSolutionResponse = retailClient.addSolution(new AddSolutionRequest());
 
         retailClient.recognizeMessageForTest(new RecognizeMessageForTestRequest());
+
+        RecognizeMessageResponse recognizeMessageResponse = retailClient.recognizeMessage(
+            new RecognizeMessageRequest());
     }
 
 }

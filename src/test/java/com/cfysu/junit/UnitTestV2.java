@@ -30,6 +30,8 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class UnitTestV2 {
@@ -41,6 +43,17 @@ public class UnitTestV2 {
     private static final Logger LOGGER = LoggerFactory.getLogger(UnitTestV2.class);
 
     private Random random = new Random();
+
+    @Test
+    public void testPattern(){
+        String link = "https://www.lazada.sg/products/i2601540022.html?spm=a1zawe.24863640.table_online_product.1.16724edfQ55Jkj";
+        Pattern compile = Pattern.compile("https?://.*(lazada).*products.*i(?<itemId>\\d+).*");
+        Matcher matcher = compile.matcher(link);
+        System.out.println(matcher.matches());
+        System.out.println(matcher.group("itemId"));
+        //https?://.*(lazada).*products.*i(?<itemId>\\d+).*
+        //https?://.*(lazada).*products.*i(?<itemId>\d+).*
+    }
 
     @Test
     public void testConstruct() {

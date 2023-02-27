@@ -2,9 +2,6 @@ package com.cfysu.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,8 +9,6 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 
-import com.alibaba.alime.dialog.api.Attributes;
-import com.alibaba.alime.dialog.api.output.OutputMessage;
 import com.alibaba.fastjson.JSON;
 
 import com.caucho.hessian.io.Hessian2Input;
@@ -127,15 +122,15 @@ public class SerialUtil {
         return baos.toByteArray();
     }
 
-    public static <T> T deserializeByKryo(byte[] in, Class c) throws Exception {
-        Input input = null;
-        ByteArrayInputStream bais = null;
-        bais = new ByteArrayInputStream(in);
-        input = new Input(bais);
-        input.close();
-        T t = (T)createKryo().readObject(input, OutputMessage.class);
-        return t;
-    }
+    //public static <T> T deserializeByKryo(byte[] in, Class c) throws Exception {
+    //    Input input = null;
+    //    ByteArrayInputStream bais = null;
+    //    bais = new ByteArrayInputStream(in);
+    //    input = new Input(bais);
+    //    input.close();
+    //    T t = (T)createKryo().readObject(input, OutputMessage.class);
+    //    return t;
+    //}
 
     public static void main(String[] args) throws Exception {
 
