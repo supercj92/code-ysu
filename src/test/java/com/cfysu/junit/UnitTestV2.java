@@ -581,6 +581,14 @@ public class UnitTestV2 {
         System.out.println(topPVSet.size());
     }
 
+    @Test
+    public void test(){
+        String str = "sg_Order-Location,sg_Order-Time,my_order-location,my_order-time,ph_order-location,ph_order-time,id_order-location,id_order-time,vn_order-location,vn_order-time,th_order-location,th_order-time";
+        String[] arrays = StringUtils.split(str, ",");
+        System.out.println(JSON.toJSONString(Arrays.asList(arrays)));
+
+    }
+
     private Set<Long> toSet(String string) {
         String[] top100 = StringUtils.split(string, ",");
         return Arrays.stream(top100).map(Long::valueOf).collect(Collectors.toSet());
