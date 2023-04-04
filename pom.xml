@@ -338,7 +338,7 @@
         <dependency>
             <groupId>com.aliyun.inner</groupId>
             <artifactId>retailbot20210224</artifactId>
-            <version>2.10.0</version>
+            <version>2.11.0-snapshot</version>
         </dependency>
         <dependency>
             <groupId>com.aliyun</groupId>
