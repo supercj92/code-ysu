@@ -13,13 +13,13 @@ public class RedisTest {
 
     @Before
     public void setUp(){
-        jedis = new Jedis("127.0.0.1",6379);
+        jedis = new Jedis("127.0.0.1",36379);
     }
 
     @Test
     public void testJedis(){
         jedis.set("test", "hello world");
-        System.out.print("from redis:" + jedis.get("test"));
-
+        System.out.println("from redis:" + jedis.get("test"));
+        System.out.println(jedis.exists("spring:session:sessions:3ec77be2-7ac6-4986-a67e-81b1475b3efd"));
     }
 }

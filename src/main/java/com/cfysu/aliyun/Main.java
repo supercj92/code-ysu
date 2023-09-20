@@ -13,7 +13,6 @@ import com.aliyun.retailbot20210224.models.QueryArtificialServicePolicyResponse;
 import com.aliyun.retailbot20210224.models.RecognizeMessageForTestRequest;
 import com.aliyun.retailbot20210224.models.RecognizeMessageRequest;
 import com.aliyun.retailbot20210224.models.RecognizeMessageResponse;
-import com.aliyun.retailbot20210224.models.SaveArtificialServicePolicyRequest;
 import com.aliyun.teaopenapi.models.Config;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -68,7 +67,6 @@ public class Main {
         QueryArtificialServicePolicyRequest queryArtificialServicePolicyRequest = new QueryArtificialServicePolicyRequest();
         QueryArtificialServicePolicyResponse queryArtificialServicePolicyResponse
             = retailClient.queryArtificialServicePolicy(queryArtificialServicePolicyRequest);
-        SaveArtificialServicePolicyRequest saveArtificialServicePolicyRequest = new SaveArtificialServicePolicyRequest();
     }
 
 }

@@ -1,7 +1,6 @@
 package com.cfysu.lab.es;
 
 import java.io.IOException;
-import java.util.Date;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
@@ -9,7 +8,6 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.action.main.MainResponse;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.Strings;
@@ -29,7 +27,7 @@ public class ESMain {
                 new HttpHost("localhost", 9200, "http")));
 
         try {
-            get(client);
+            performGetRequest(client);
         } catch (Exception e) {
             log.error("", e);
         } finally {
@@ -50,7 +48,7 @@ public class ESMain {
         IndexResponse index = client.index(indexRequest);
     }
 
-    public static void get(RestHighLevelClient client) throws Exception {
+    public static void performGetRequest(RestHighLevelClient client) throws Exception {
         GetRequest getRequest = new GetRequest(
             "twitter",
             "doc",
