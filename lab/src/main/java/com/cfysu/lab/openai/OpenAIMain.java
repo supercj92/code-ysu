@@ -12,7 +12,7 @@ import com.theokanning.openai.service.OpenAiService;
 public class OpenAIMain {
 
     public static void main(String[] args) {
-        OpenAiService service = new OpenAiService("");
+        OpenAiService service = new OpenAiService("9a");
         ProxySelector aDefault = ProxySelector.getDefault();
         CompletionRequest completionRequest = CompletionRequest.builder()
             .prompt("介绍下openai")
