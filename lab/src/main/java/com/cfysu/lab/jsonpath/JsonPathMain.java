@@ -1,4 +1,4 @@
-package com.cfysu.lab.json;
+package com.cfysu.lab.jsonpath;
 
 import java.util.List;
 

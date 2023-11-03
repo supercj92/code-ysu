@@ -20,6 +20,7 @@ import com.google.common.collect.Maps;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.FastDateFormat;
 import org.junit.Test;
 
 import com.cfysu.model.Ford;
@@ -63,6 +64,11 @@ public class UnitTestV2 {
     @Test
     public void testDivid() {
         System.out.println(10 / 3);
+    }
+
+    @Test
+    public void testDate(){
+        System.out.println(FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
     }
 
     @Test

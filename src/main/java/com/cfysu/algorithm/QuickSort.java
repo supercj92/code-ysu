@@ -1,6 +1,8 @@
 package com.cfysu.algorithm;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 快排基于划分的思想
@@ -8,6 +10,8 @@ import java.util.Arrays;
 public class QuickSort {
 
     private static int[] theArray = {3, 7, 1, 8, 6, 9, 2, 5, 0, 5};
+
+
 
     public static void quickSort(int left, int right) {
         if (right - left <= 0) {
@@ -99,5 +103,8 @@ public class QuickSort {
         //partition(theArray);
         quickSort(0, theArray.length - 1);
         System.out.println("after sort:" + Arrays.toString(theArray));
+        List<Integer> list = new ArrayList<>();
+        Integer[] ints = new Integer[2];
+        list.toArray(ints);
     }
 }
