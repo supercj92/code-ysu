@@ -34,7 +34,7 @@ public class LLMClient {
         log.info(body);
 
         RequestHeadersSpec<?> requestHeadersSpec = webClient.post()
-            .uri("https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation")
+            .uri("xxx")
             .contentType(MediaType.APPLICATION_JSON)
             .accept(MediaType.TEXT_EVENT_STREAM)
             .header("Authorization", "xxx")
